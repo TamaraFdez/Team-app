@@ -1,0 +1,199 @@
+/* ═══════════════════════════════════════════════════════════════
+   Colores, texto y formas de toda la aplicación.
+
+   TEMAS: el estilo por defecto es "ciber" (el de :root). El tema
+   "comic" está al final y solo cambia lo necesario. Para elegir:
+     <html data-tema="comic">   o   document.documentElement.dataset.tema = 'comic'
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── COLORES · marca ─────────────────────────────────────────── */
+  --color-primario:        #70C9AF;   /* verde del logo */
+  --color-primario-hover:  #8ADBC3;   /* más claro, al pasar el ratón */
+  --color-primario-activo: #58B196;   /* más oscuro, al pulsar */
+  --color-primario-suave:  rgba(112, 201, 175, 0.15);  /* fondos tenues */
+
+  /* ── COLORES · fondos ────────────────────────────────────────── */
+  --color-fondo:           #161C32;   /* fondo de la app */
+  --color-fondo-alt:       #111628;   /* aside, zonas más oscuras */
+  --color-superficie:      #1F2742;   /* tarjetas, paneles */
+  --color-superficie-alt:  #2A3354;   /* tarjeta elevada, hover de filas */
+  --color-overlay:         rgba(10, 13, 25, 0.75);  /* detrás de los modales */
+
+  /* ── COLORES · texto ─────────────────────────────────────────── */
+  --color-texto:           #E8ECF5;   /* texto principal */
+  --color-texto-suave:     #A8B1C9;   /* texto secundario */
+  --color-texto-tenue:     #6F7A99;   /* ayudas, placeholders */
+  --color-texto-sobre-primario: #0F1426;  /* texto encima del verde */
+
+  /* ── COLORES · bordes ────────────────────────────────────────── */
+  --color-borde:           #323C5F;
+  --color-borde-fuerte:    #47537D;
+  --color-foco:            #70C9AF;   /* contorno al navegar con teclado */
+
+  /* ── COLORES · estados ───────────────────────────────────────── */
+  --color-exito:           #5FD38D;
+  --color-aviso:           #F2C14E;
+  --color-error:           #F0647A;
+  --color-info:            #62A8F0;
+
+  /* ── COLORES · alineamiento de personajes ────────────────────── */
+  --color-heroe:           #62A8F0;   /* good */
+  --color-neutral:         #A8B1C9;   /* neutral */
+  --color-villano:         #F0647A;   /* evil */
+
+  /* ── COLORES · resultado de misión ───────────────────────────── */
+  --color-res-catastrofe:  #D93A55;
+  --color-res-fallida:     #F0647A;
+  --color-res-regulinchi:  #F2C14E;
+  --color-res-terminada:   #62A8F0;
+  --color-res-nice:        #5FD38D;
+
+  /* ── TEXTO · tipografías ─────────────────────────────────────── */
+  /* [ciber] Títulos: condensada y gruesa, como el logo. Si no se carga la
+     fuente, cae a las siguientes de la lista. */
+  --fuente-titulo: 'Saira Condensed', 'Barlow Condensed', 'Oswald',
+                   'Arial Narrow', Impact, sans-serif;
+  --fuente-texto:  'Inter', system-ui, -apple-system, 'Segoe UI',
+                   Roboto, Arial, sans-serif;
+  --fuente-mono:   ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* ── TEXTO · tamaños ─────────────────────────────────────────── */
+  --texto-xs:   0.75rem;    /* 12px */
+  --texto-sm:   0.875rem;   /* 14px */
+  --texto-base: 1rem;       /* 16px */
+  --texto-md:   1.125rem;   /* 18px */
+  --texto-lg:   1.25rem;    /* 20px */
+  --texto-xl:   1.5rem;     /* 24px */
+  --texto-2xl:  2rem;       /* 32px */
+  --texto-3xl:  2.5rem;     /* 40px */
+  --texto-4xl:  3.25rem;    /* 52px */
+
+  /* ── TEXTO · grosores ────────────────────────────────────────── */
+  --peso-normal:  400;
+  --peso-medio:   500;
+  --peso-semi:    600;
+  --peso-negrita: 700;
+  --peso-extra:   800;
+
+  /* ── TEXTO · interlineado y espaciado de letras ──────────────── */
+  --interlineado-titulo: 1.15;
+  --interlineado-texto:  1.55;
+  --letras-titulo:       0.04em;    /* títulos en mayúsculas */
+  --letras-etiqueta:     0.08em;    /* etiquetas pequeñas */
+
+  /* ── FORMAS · esquinas ───────────────────────────────────────── */
+  --radio-xs:    4px;
+  --radio-sm:    8px;     /* botones, inputs */
+  --radio-md:    12px;
+  --radio-lg:    16px;    /* tarjetas */
+  --radio-xl:    24px;    /* carta de reclutar */
+  --radio-total: 9999px;  /* píldoras y círculos (avatares, badges) */
+
+  /* ── FORMAS · bordes ─────────────────────────────────────────── */
+  --borde-fino:   1px;
+  --borde-medio:  2px;
+  --borde-grueso: 4px;
+
+  /* ── FORMAS · sombras ────────────────────────────────────────── */
+  --sombra-sm:  0 1px 3px rgba(0, 0, 0, 0.35);
+  --sombra-md:  0 4px 12px rgba(0, 0, 0, 0.4);
+  --sombra-lg:  0 12px 32px rgba(0, 0, 0, 0.5);
+  --sombra-brillo: 0 0 0 3px var(--color-primario-suave),
+                   0 0 16px rgba(112, 201, 175, 0.35);   /* resalte verde */
+
+  /* ── FORMAS · espaciado ──────────────────────────────────────── */
+  --espacio-1:  0.25rem;   /*  4px */
+  --espacio-2:  0.5rem;    /*  8px */
+  --espacio-3:  0.75rem;   /* 12px */
+  --espacio-4:  1rem;      /* 16px */
+  --espacio-5:  1.5rem;    /* 24px */
+  --espacio-6:  2rem;      /* 32px */
+  --espacio-7:  3rem;      /* 48px */
+  --espacio-8:  4rem;      /* 64px */
+
+  /* ── FORMAS · medidas de la maquetación ──────────────────────── */
+  --ancho-aside:      220px;
+  --ancho-contenido:  1100px;   /* máximo del <main> */
+  --alto-navbar:      64px;
+  --ancho-carta:      340px;    /* carta de reclutar */
+  --alto-boton:       44px;     /* también como zona táctil mínima */
+
+  /* ── FORMAS · esquinas cortadas e inclinación ────────────────── */
+  /* Uso:  clip-path: var(--forma-corte);  transform: var(--inclinacion-boton);
+     OJO: clip-path recorta también box-shadow y border. Para sombra en
+     un elemento cortado, ponla en el contenedor con
+     filter: drop-shadow(...) y el borde simúlalo con un fondo. */
+  --esquina-corte: 12px;
+  --forma-corte: polygon(
+    0 0,
+    calc(100% - var(--esquina-corte)) 0,
+    100% var(--esquina-corte),
+    100% 100%,
+    var(--esquina-corte) 100%,
+    0 calc(100% - var(--esquina-corte))
+  );
+  --inclinacion-boton:       none;
+  --inclinacion-boton-hover: none;
+
+  /* ── MOVIMIENTO ──────────────────────────────────────────────── */
+  --transicion-rapida: 120ms ease;
+  --transicion-media:  220ms ease;
+  --transicion-lenta:  400ms ease;
+
+  /* ── CAPAS (z-index) ─────────────────────────────────────────── */
+  --capa-aside:  10;
+  --capa-modal:  100;
+  --capa-toast:  200;
+}
+
+/* ── Puntos de corte (los @media no aceptan var(), se apuntan aquí) ──
+   móvil:   hasta 600px
+   tablet:  601px – 900px
+   escritorio: desde 901px
+   Uso:  @media (max-width: 900px) { ... }
+   ─────────────────────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════════
+   TEMA COMIC
+   Letras de tebeo, bordes gruesos y oscuros, sombras duras sin
+   difuminar y esquinas más redondeadas. Los colores de marca
+   se quedan igual; solo se tocan fuentes, formas y bordes.
+   ═══════════════════════════════════════════════════════════════ */
+:root[data-tema="comic"] {
+  /* texto */
+  --fuente-titulo: 'Bangers', 'Luckiest Guy', 'Impact', 'Arial Black', sans-serif;
+  --fuente-texto:  'Comic Neue', 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --letras-titulo: 0.06em;
+  --interlineado-titulo: 1.1;
+
+  /* fondos y bordes algo más contrastados */
+  --color-fondo:        #1B2140;
+  --color-superficie:   #263058;
+  --color-borde:        #0B0F20;
+  --color-borde-fuerte: #0B0F20;
+
+  /* formas */
+  --radio-sm: 10px;
+  --radio-md: 16px;
+  --radio-lg: 20px;
+  --radio-xl: 28px;
+  --borde-fino:   2px;
+  --borde-medio:  3px;
+  --borde-grueso: 5px;
+
+  /* sin esquinas cortadas; botones inclinados como en un tebeo */
+  --forma-corte: none;
+  --inclinacion-boton:       skewX(-8deg) rotate(-1deg);
+  --inclinacion-boton-hover: skewX(-8deg) rotate(1deg) scale(1.05);
+
+  /* sombras duras (sin difuminado) */
+  --sombra-sm: 2px 2px 0 #0B0F20;
+  --sombra-md: 4px 4px 0 #0B0F20;
+  --sombra-lg: 8px 8px 0 #0B0F20;
+  --sombra-brillo: 4px 4px 0 #0B0F20, 0 0 0 3px var(--color-primario);
+
+  /* movimiento más "saltarín" */
+  --transicion-rapida: 100ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transicion-media:  200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
