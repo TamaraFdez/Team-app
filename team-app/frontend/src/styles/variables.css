@@ -1,108 +1,88 @@
 /* ═══════════════════════════════════════════════════════════════
-   Colores, texto y formas de toda la aplicación.
+   Colores, texto y formas según el diseño. 
+   Dos temas:
+     · ciber  (cian + rosa, neón)      → el de por defecto
+     · comic  (amarillo + rosa, bordes negros y sombras duras)
 
-   TEMAS: el estilo por defecto es "ciber" (el de :root). El tema
-   "comic" está al final y solo cambia lo necesario. Para elegir:
-     <html data-tema="comic">   o   document.documentElement.dataset.tema = 'comic'
+   Para elegir:  <html data-tema="comic">
+            o:   document.documentElement.dataset.tema = 'comic'
    ═══════════════════════════════════════════════════════════════ */
 
+
+/* ═══════════════════════════════════════════════════════════════
+   1. LO COMÚN A LOS DOS TEMAS (texto, espacios, medidas, formas)
+   ═══════════════════════════════════════════════════════════════ */
 :root {
-  /* ── COLORES · marca ─────────────────────────────────────────── */
-  --color-primario:        #70C9AF;   /* verde del logo */
-  --color-primario-hover:  #8ADBC3;   /* más claro, al pasar el ratón */
-  --color-primario-activo: #58B196;   /* más oscuro, al pulsar */
-  --color-primario-suave:  rgba(112, 201, 175, 0.15);  /* fondos tenues */
+    /* ── COLORES · marca ─────────────────────────────────────────── */
+  --color-primario-marca:        #70C9AF;   /* verde del logo */
+  --color-primario-hover-marca:  #8ADBC3;   /* más claro, al pasar el ratón */
+  --color-primario-activo-marca: #58B196;   /* más oscuro, al pulsar */
+  --color-primario-suave-marca:  rgba(112, 201, 175, 0.15);  /* fondos tenues */
 
-  /* ── COLORES · fondos ────────────────────────────────────────── */
-  --color-fondo:           #161C32;   /* fondo de la app */
-  --color-fondo-alt:       #111628;   /* aside, zonas más oscuras */
-  --color-superficie:      #1F2742;   /* tarjetas, paneles */
-  --color-superficie-alt:  #2A3354;   /* tarjeta elevada, hover de filas */
-  --color-overlay:         rgba(10, 13, 25, 0.75);  /* detrás de los modales */
+  /* ── TEXTO · familias ────────────────────────────────────────── */
+  --fuente-titulo: 'Rajdhani', 'Arial Narrow', Impact, sans-serif;  /* títulos, cifras grandes, nombres de personaje */
+  --fuente-texto:  'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;  /* texto, botones, menús */
+  --fuente-mono:   'JetBrains Mono', ui-monospace, Consolas, monospace;  /* estadísticas, %, tiempos, fechas */
 
-  /* ── COLORES · texto ─────────────────────────────────────────── */
-  --color-texto:           #E8ECF5;   /* texto principal */
-  --color-texto-suave:     #A8B1C9;   /* texto secundario */
-  --color-texto-tenue:     #6F7A99;   /* ayudas, placeholders */
-  --color-texto-sobre-primario: #0F1426;  /* texto encima del verde */
+  /* ── TEXTO */
+  --fuente-titular-1: 700 3.5rem/3.5rem var(--fuente-titulo);   /* 56/56 */
+  --fuente-titular-2: 700 2.5rem/3rem   var(--fuente-titulo);   /* 40/48 */
+  --fuente-titular-3: 700 1.75rem/1.875rem var(--fuente-titulo);/* 28/30 */
+  --fuente-subtitulo: 600 1.125rem/1.625rem var(--fuente-texto);/* 18/26 */
+  --fuente-cuerpo:    400 1rem/1.5rem   var(--fuente-texto);    /* 16/24 */
+  --fuente-boton:     700 0.875rem/1rem var(--fuente-texto);    /* 14/16 */
+  --fuente-dato:      500 1.25rem/1.5rem var(--fuente-mono);    /* 20/24 */
+  --fuente-nota:      500 0.75rem/1rem  var(--fuente-mono);     /* 12/16 */
 
-  /* ── COLORES · bordes ────────────────────────────────────────── */
-  --color-borde:           #323C5F;
-  --color-borde-fuerte:    #47537D;
-  --color-foco:            #70C9AF;   /* contorno al navegar con teclado */
+  /* ── TEXTO · tamaños sueltos ─────── */
+  --texto-xs:   0.75rem;    /* 12px · nota */
+  --texto-sm:   0.875rem;   /* 14px · botón */
+  --texto-base: 1rem;       /* 16px · cuerpo */
+  --texto-md:   1.125rem;   /* 18px · subtítulo */
+  --texto-lg:   1.25rem;    /* 20px · dato */
+  --texto-xl:   1.75rem;    /* 28px · titular 3 */
+  --texto-2xl:  2.5rem;     /* 40px · titular 2 */
+  --texto-3xl:  2.5rem;     /* (alias de 2xl) */
+  --texto-4xl:  3.5rem;     /* 56px · titular 1 */
 
-  /* ── COLORES · estados ───────────────────────────────────────── */
-  --color-exito:           #5FD38D;
-  --color-aviso:           #F2C14E;
-  --color-error:           #F0647A;
-  --color-info:            #62A8F0;
-
-  /* ── COLORES · alineamiento de personajes ────────────────────── */
-  --color-heroe:           #62A8F0;   /* good */
-  --color-neutral:         #A8B1C9;   /* neutral */
-  --color-villano:         #F0647A;   /* evil */
-
-  /* ── COLORES · resultado de misión ───────────────────────────── */
-  --color-res-catastrofe:  #D93A55;
-  --color-res-fallida:     #F0647A;
-  --color-res-regulinchi:  #F2C14E;
-  --color-res-terminada:   #62A8F0;
-  --color-res-nice:        #5FD38D;
-
-  /* ── TEXTO · tipografías ─────────────────────────────────────── */
-  /* [ciber] Títulos: condensada y gruesa, como el logo. Si no se carga la
-     fuente, cae a las siguientes de la lista. */
-  --fuente-titulo: 'Saira Condensed', 'Barlow Condensed', 'Oswald',
-                   'Arial Narrow', Impact, sans-serif;
-  --fuente-texto:  'Inter', system-ui, -apple-system, 'Segoe UI',
-                   Roboto, Arial, sans-serif;
-  --fuente-mono:   ui-monospace, 'Cascadia Code', Consolas, monospace;
-
-  /* ── TEXTO · tamaños ─────────────────────────────────────────── */
-  --texto-xs:   0.75rem;    /* 12px */
-  --texto-sm:   0.875rem;   /* 14px */
-  --texto-base: 1rem;       /* 16px */
-  --texto-md:   1.125rem;   /* 18px */
-  --texto-lg:   1.25rem;    /* 20px */
-  --texto-xl:   1.5rem;     /* 24px */
-  --texto-2xl:  2rem;       /* 32px */
-  --texto-3xl:  2.5rem;     /* 40px */
-  --texto-4xl:  3.25rem;    /* 52px */
-
-  /* ── TEXTO · grosores ────────────────────────────────────────── */
   --peso-normal:  400;
   --peso-medio:   500;
   --peso-semi:    600;
   --peso-negrita: 700;
-  --peso-extra:   800;
+  --peso-extra:   700;      /* Rajdhani llega hasta 700 */
 
-  /* ── TEXTO · interlineado y espaciado de letras ──────────────── */
-  --interlineado-titulo: 1.15;
-  --interlineado-texto:  1.55;
-  --letras-titulo:       0.04em;    /* títulos en mayúsculas */
-  --letras-etiqueta:     0.08em;    /* etiquetas pequeñas */
+  --interlineado-titulo: 1.1;
+  --interlineado-texto:  1.5;
+  --letras-titulo:       0.02em;
+  --letras-etiqueta:     0.08em;
 
-  /* ── FORMAS · esquinas ───────────────────────────────────────── */
-  --radio-xs:    4px;
-  --radio-sm:    8px;     /* botones, inputs */
-  --radio-md:    12px;
-  --radio-lg:    16px;    /* tarjetas */
-  --radio-xl:    24px;    /* carta de reclutar */
-  --radio-total: 9999px;  /* píldoras y círculos (avatares, badges) */
+  /* ── FORMAS · figuras recortadas ─────────────────────────────── */
+  /* Ficha cortada: rectángulo con la esquina inferior derecha cortada
+     (indicadores y cifras, p. ej. "24/30") */
+  --corte-ficha: 14px;
+  --forma-ficha: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--corte-ficha)),
+    calc(100% - var(--corte-ficha)) 100%,
+    0 100%
+  );
+  /* Escudo: esquinas superiores cortadas y punta abajo (equipos) */
+  --forma-escudo: polygon(
+    15% 0, 85% 0, 100% 15%, 100% 65%, 50% 100%, 0 65%, 0 15%
+  );
+  /* Sello inclinado: etiquetas con 4° de giro */
+  --giro-sello: -4deg;
+  --inclinacion-sello: rotate(var(--giro-sello));
+  /* Circular: avatares y botones de deslizar → border-radius: var(--radio-total) */
+  --radio-total: 9999px;
 
-  /* ── FORMAS · bordes ─────────────────────────────────────────── */
-  --borde-fino:   1px;
-  --borde-medio:  2px;
-  --borde-grueso: 4px;
+  /* (compatibilidad con el CSS anterior: ya no se aplican a botones) */
+  --forma-corte: none;
+  --inclinacion-boton: none;
+  --inclinacion-boton-hover: none;
 
-  /* ── FORMAS · sombras ────────────────────────────────────────── */
-  --sombra-sm:  0 1px 3px rgba(0, 0, 0, 0.35);
-  --sombra-md:  0 4px 12px rgba(0, 0, 0, 0.4);
-  --sombra-lg:  0 12px 32px rgba(0, 0, 0, 0.5);
-  --sombra-brillo: 0 0 0 3px var(--color-primario-suave),
-                   0 0 16px rgba(112, 201, 175, 0.35);   /* resalte verde */
-
-  /* ── FORMAS · espaciado ──────────────────────────────────────── */
+  /* ── FORMAS ───────────────────────────────--------------───────── */
   --espacio-1:  0.25rem;   /*  4px */
   --espacio-2:  0.5rem;    /*  8px */
   --espacio-3:  0.75rem;   /* 12px */
@@ -112,29 +92,12 @@
   --espacio-7:  3rem;      /* 48px */
   --espacio-8:  4rem;      /* 64px */
 
-  /* ── FORMAS · medidas de la maquetación ──────────────────────── */
+  /* ── FORMAS ───────────────────----------------------------───── */
   --ancho-aside:      220px;
-  --ancho-contenido:  1100px;   /* máximo del <main> */
+  --ancho-contenido:  1100px;
   --alto-navbar:      64px;
-  --ancho-carta:      340px;    /* carta de reclutar */
-  --alto-boton:       44px;     /* también como zona táctil mínima */
-
-  /* ── FORMAS · esquinas cortadas e inclinación ────────────────── */
-  /* Uso:  clip-path: var(--forma-corte);  transform: var(--inclinacion-boton);
-     OJO: clip-path recorta también box-shadow y border. Para sombra en
-     un elemento cortado, ponla en el contenedor con
-     filter: drop-shadow(...) y el borde simúlalo con un fondo. */
-  --esquina-corte: 12px;
-  --forma-corte: polygon(
-    0 0,
-    calc(100% - var(--esquina-corte)) 0,
-    100% var(--esquina-corte),
-    100% 100%,
-    var(--esquina-corte) 100%,
-    0 calc(100% - var(--esquina-corte))
-  );
-  --inclinacion-boton:       none;
-  --inclinacion-boton-hover: none;
+  --ancho-carta:      340px;
+  --alto-boton:       44px;
 
   /* ── MOVIMIENTO ──────────────────────────────────────────────── */
   --transicion-rapida: 120ms ease;
@@ -147,53 +110,133 @@
   --capa-toast:  200;
 }
 
-/* ── Puntos de corte (los @media no aceptan var(), se apuntan aquí) ──
-   móvil:   hasta 600px
-   tablet:  601px – 900px
-   escritorio: desde 901px
-   Uso:  @media (max-width: 900px) { ... }
-   ─────────────────────────────────────────────────────────────── */
 
 /* ═══════════════════════════════════════════════════════════════
-   TEMA COMIC
-   Letras de tebeo, bordes gruesos y oscuros, sombras duras sin
-   difuminar y esquinas más redondeadas. Los colores de marca
-   se quedan igual; solo se tocan fuentes, formas y bordes.
+   2. TEMA CIBER (por defecto)
+   ═══════════════════════════════════════════════════════════════ */
+:root,
+:root[data-tema="ciber"] {
+  /* paleta del diseño */
+  --color-primario:             #19E3FF;
+  --color-primario-variante:    #0AA7C2;
+  --color-secundario:           #FF2E9A;
+  --color-secundario-variante:  #C21C75;
+  --color-fondo:                #070817;
+  --color-superficie:           #0E1630;
+  --color-error:                #FF1F3D;
+  --color-terciario:            #8B5CFF;
+
+  --color-sobre-primario:       #07101F;
+  --color-sobre-secundario:     #07101F;
+  --color-sobre-fondo:          #E8EEFF;
+  --color-sobre-superficie:     #E8EEFF;
+  --color-sobre-error:          #07101F;
+  --color-sobre-terciario:      #07101F;
+
+  /* contorno: línea de 1px de neón */
+  --color-contorno: var(--color-primario);
+  --color-borde:    color-mix(in srgb, var(--color-primario) 45%, transparent);
+  --borde-fino:   1px;
+  --borde-medio:  2px;
+  --borde-grueso: 3px;
+
+  /* esquinas: pequeña 8 · media 14 · grande 22 */
+  --radio-xs: 4px;
+  --radio-sm: 8px;      /* botones, chips y campos */
+  --radio-md: 14px;     /* tarjetas y paneles */
+  --radio-lg: 22px;     /* modales y hojas */
+  --radio-xl: 22px;
+
+  /* elevación: brillo de neón */
+  --sombra-sm: 0 0 8px  color-mix(in srgb, var(--color-primario) 35%, transparent);
+  --sombra-md: 0 0 14px color-mix(in srgb, var(--color-primario) 45%, transparent);
+  --sombra-lg: 0 0 26px color-mix(in srgb, var(--color-primario) 55%, transparent);
+  --sombra-brillo: 0 0 0 1px var(--color-primario),
+                   0 0 20px color-mix(in srgb, var(--color-primario) 60%, transparent);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   3. TEMA COMIC
    ═══════════════════════════════════════════════════════════════ */
 :root[data-tema="comic"] {
-  /* texto */
-  --fuente-titulo: 'Bangers', 'Luckiest Guy', 'Impact', 'Arial Black', sans-serif;
-  --fuente-texto:  'Comic Neue', 'Nunito', 'Segoe UI', system-ui, sans-serif;
-  --letras-titulo: 0.06em;
-  --interlineado-titulo: 1.1;
+  /* paleta del diseño */
+  --color-primario:             #FFC93C;
+  --color-primario-variante:    #E0A100;
+  --color-secundario:           #FF3D7F;
+  --color-secundario-variante:  #C21F58;
+  --color-fondo:                #13101F;
+  --color-superficie:           #221C36;
+  --color-error:                #D90429;
+  --color-terciario:            #5B7CFF;
 
-  /* fondos y bordes algo más contrastados */
-  --color-fondo:        #1B2140;
-  --color-superficie:   #263058;
-  --color-borde:        #0B0F20;
-  --color-borde-fuerte: #0B0F20;
+  --color-sobre-primario:       #13101F;
+  --color-sobre-secundario:     #13101F;
+  --color-sobre-fondo:          #F4F1FA;
+  --color-sobre-superficie:     #F4F1FA;
+  --color-sobre-error:          #FFFFFF;
+  --color-sobre-terciario:      #13101F;
 
-  /* formas */
-  --radio-sm: 10px;
-  --radio-md: 16px;
-  --radio-lg: 20px;
-  --radio-xl: 28px;
-  --borde-fino:   2px;
+  /* contorno: borde negro de 3px */
+  --color-contorno: #000000;
+  --color-borde:    #000000;
+  --borde-fino:   3px;
   --borde-medio:  3px;
-  --borde-grueso: 5px;
+  --borde-grueso: 4px;
 
-  /* sin esquinas cortadas; botones inclinados como en un tebeo */
-  --forma-corte: none;
-  --inclinacion-boton:       skewX(-8deg) rotate(-1deg);
-  --inclinacion-boton-hover: skewX(-8deg) rotate(1deg) scale(1.05);
+  /* esquinas: pequeña 4 · media 6 · grande 10 */
+  --radio-xs: 2px;
+  --radio-sm: 4px;      /* botones, chips y campos */
+  --radio-md: 6px;      /* tarjetas y paneles */
+  --radio-lg: 10px;     /* modales y hojas */
+  --radio-xl: 10px;
 
-  /* sombras duras (sin difuminado) */
-  --sombra-sm: 2px 2px 0 #0B0F20;
-  --sombra-md: 4px 4px 0 #0B0F20;
-  --sombra-lg: 8px 8px 0 #0B0F20;
-  --sombra-brillo: 4px 4px 0 #0B0F20, 0 0 0 3px var(--color-primario);
-
-  /* movimiento más "saltarín" */
-  --transicion-rapida: 100ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  --transicion-media:  200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* elevación: sombra negra dura, sin difuminar */
+  --sombra-sm: 2px 2px 0 #000;
+  --sombra-md: 4px 4px 0 #000;
+  --sombra-lg: 6px 6px 0 #000;
+  --sombra-brillo: 4px 4px 0 #000, 0 0 0 3px var(--color-primario);
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   4. NOMBRES DERIVADOS (se calculan solos a partir de la paleta
+      del tema activo; no hace falta tocarlos al cambiar de tema)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  /* texto y fondos */
+  --color-texto:                var(--color-sobre-fondo);
+  --color-texto-sobre-primario: var(--color-sobre-primario);
+  --color-texto-suave: color-mix(in srgb, var(--color-texto) 70%, var(--color-fondo));
+  --color-texto-tenue: color-mix(in srgb, var(--color-texto) 50%, var(--color-fondo));
+  --color-fondo-alt:      color-mix(in srgb, var(--color-fondo) 75%, black);
+  --color-superficie-alt: color-mix(in srgb, var(--color-superficie) 88%, white);
+  --color-overlay:        color-mix(in srgb, var(--color-fondo) 80%, transparent);
+
+  /* primario en sus estados */
+  --color-primario-hover:  color-mix(in srgb, var(--color-primario) 85%, white);
+  --color-primario-activo: var(--color-primario-variante);
+  --color-primario-suave:  color-mix(in srgb, var(--color-primario) 15%, transparent);
+  --color-borde-fuerte:    var(--color-contorno);
+  --color-foco:            var(--color-primario);
+
+  /* estados (éxito y aviso no están en el diseño: valores propuestos) */
+  --color-exito: #5FD38D;
+  --color-aviso: #F2C14E;
+  --color-info:  var(--color-terciario);
+
+  /* alineamiento de personajes (good / bad / neutral) */
+  --color-heroe:   var(--color-primario);
+  --color-villano: var(--color-secundario);
+  --color-neutral: var(--color-terciario);
+
+  /* resultado de misión */
+  --color-res-catastrofe: var(--color-error);
+  --color-res-fallida:    var(--color-secundario);
+  --color-res-regulinchi: var(--color-aviso);
+  --color-res-terminada:  var(--color-terciario);
+  --color-res-nice:       var(--color-exito);
+}
+
+/* Puntos de corte (los @media no aceptan var()):
+   móvil hasta 600px · tablet 601–900px · escritorio desde 901px */

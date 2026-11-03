@@ -1,6 +1,5 @@
-// App.jsx
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
+import Layout from "./components/layout/Layout";
 // import Misiones from "./pages/Misiones";
 // import Equipos from "./pages/Equipos";
 // import EquipoDetalle from "./pages/EquipoDetalle";

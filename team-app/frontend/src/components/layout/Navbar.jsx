@@ -4,7 +4,8 @@ export default function Navbar() {
   return (
     <nav>
       <NavLink to="/">Principal</NavLink>
-     
+      <NavLink to="/">Principal</NavLink>
+      
     </nav>
   )
 }
