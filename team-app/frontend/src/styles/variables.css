@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Quicksand:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 /* ═══════════════════════════════════════════════════════════════
    Colores, texto y formas según el diseño. 
    Dos temas:
@@ -28,11 +29,11 @@
   --fuente-titular-1: 700 3.5rem/3.5rem var(--fuente-titulo);   /* 56/56 */
   --fuente-titular-2: 700 2.5rem/3rem   var(--fuente-titulo);   /* 40/48 */
   --fuente-titular-3: 700 1.75rem/1.875rem var(--fuente-titulo);/* 28/30 */
-  --fuente-subtitulo: 600 1.125rem/1.625rem var(--fuente-texto);/* 18/26 */
-  --fuente-cuerpo:    400 1rem/1.5rem   var(--fuente-texto);    /* 16/24 */
-  --fuente-boton:     700 0.875rem/1rem var(--fuente-texto);    /* 14/16 */
-  --fuente-dato:      500 1.25rem/1.5rem var(--fuente-mono);    /* 20/24 */
-  --fuente-nota:      500 0.75rem/1rem  var(--fuente-mono);     /* 12/16 */
+  --fuente-subtitulo: 500 1.125rem/1.625rem var(--fuente-texto);/* 18/26 */
+  --fuente-cuerpo:    300 1rem/1.5rem   var(--fuente-texto);    /* 16/24 */
+  --fuente-boton:     800 1rem/1.2rem var(--fuente-texto);    /* 14/16 */
+  --fuente-dato:      400 1.25rem/1.5rem var(--fuente-mono);    /* 20/24 */
+  --fuente-nota:      400 0.75rem/1rem  var(--fuente-mono);     /* 12/16 */
 
   /* ── TEXTO · tamaños sueltos ─────── */
   --texto-xs:   0.75rem;    /* 12px · nota */
@@ -112,7 +113,7 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
-   2. TEMA CIBER (por defecto)
+   2. TEMA CIBER 
    ═══════════════════════════════════════════════════════════════ */
 :root,
 :root[data-tema="ciber"] {
@@ -220,7 +221,7 @@
   --color-borde-fuerte:    var(--color-contorno);
   --color-foco:            var(--color-primario);
 
-  /* estados (éxito y aviso no están en el diseño: valores propuestos) */
+  /* estados */
   --color-exito: #5FD38D;
   --color-aviso: #F2C14E;
   --color-info:  var(--color-terciario);
