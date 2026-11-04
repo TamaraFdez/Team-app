@@ -95,7 +95,7 @@
 
   /* ── FORMAS ───────────────────----------------------------───── */
   --ancho-aside:      220px;
-  --ancho-contenido:  1100px;
+  --ancho-contenido:  1600px;
   --alto-navbar:      64px;
   --ancho-carta:      340px;
   --alto-boton:       44px;
@@ -177,6 +177,10 @@
   --color-sobre-superficie:     #F4F1FA;
   --color-sobre-error:          #FFFFFF;
   --color-sobre-terciario:      #13101F;
+
+  --color-good: #4CC790;
+  --color-warning: #ff9f00;
+  --color-danger: #fc3a3a;
 
   /* contorno: borde negro de 3px */
   --color-contorno: #000000;
