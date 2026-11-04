@@ -50,7 +50,7 @@
   --peso-medio:   500;
   --peso-semi:    600;
   --peso-negrita: 700;
-  --peso-extra:   700;      /* Rajdhani llega hasta 700 */
+  --peso-extra:   800;     
 
   --interlineado-titulo: 1.1;
   --interlineado-texto:  1.5;
@@ -60,7 +60,7 @@
   /* ── FORMAS · figuras recortadas ─────────────────────────────── */
   /* Ficha cortada: rectángulo con la esquina inferior derecha cortada
      (indicadores y cifras, p. ej. "24/30") */
-  --corte-ficha: 14px;
+  --corte-ficha: 20px;
   --forma-ficha: polygon(
     0 0,
     100% 0,

@@ -1,7 +1,20 @@
 /* ── Marco de la app (Layout) ── */
 .app {
   display: flex;
+  width: 100%;
   min-height: 100vh;
+}
+
+.app-contenido {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  padding: var(--espacio-2);
 }
 
 .app-aside {
@@ -14,34 +27,31 @@
   flex-direction: column;
   gap: var(--espacio-6);
   padding: var(--espacio-5) var(--espacio-4);
-background-color: var(--color-superficie);
+  background-color: var(--color-superficie);
 
-background-image:
+  background-image:
     linear-gradient(
-        to bottom,
-        var(--color-superficie) 0%,
-        var(--color-superficie) 50%,
-        transparent 100%
+      to bottom,
+      var(--color-superficie) 0%,
+      var(--color-superficie) 25%,
+      transparent 100%
     ),
     url("../assets/backgrounds/a_wide_cinematic_futuristic_cyberpunk_sci_fi_cit.png");
 
-background-repeat: no-repeat;
-background-position: 30% 350%;
-background-size: 100% 100%, auto 90%;
+  background-repeat: no-repeat;
+  background-position: 30% 350%;
+  background-size:
+    100% 100%,
+    auto 90%;
 
-
-border-right: var(--borde-fino) solid var(--color-borde);
+  border-right: var(--borde-fino) solid var(--color-borde);
 }
 
 .app-logo {
   width: 100%;
   max-width: 170px;
   height: auto;
-   filter:
-        drop-shadow(var(--sombra-md))
-
-        
-        
+  filter: drop-shadow(var(--sombra-md));
 }
 
 .app-nav {
@@ -56,6 +66,19 @@ border-right: var(--borde-fino) solid var(--color-borde);
   text-decoration: none;
   padding: var(--espacio-3);
   border-radius: var(--radio-sm);
+  background: var(--color-fondo);
+  filter: drop-shadow(var(--sombra-md));
+ transition:
+  background-color var(--transicion-media),
+  color var(--transicion-media),
+  transform var(--transicion-lenta);
+}
+
+.app-nav a:hover {
+  color: var(--color-sobre-primario);
+  background: var(--color-secundario);
+  transform: translateY(-1px);     
+  cursor: pointer;
 }
 
 .app-nav a.active {
@@ -63,8 +86,85 @@ border-right: var(--borde-fino) solid var(--color-borde);
   background: var(--color-primario);
 }
 
-.app-main {
-  flex: 1;
+/* topbar */
+.app-topbar {
+  position: relative;
+  overflow: hidden;
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-5);
   padding: var(--espacio-5);
-  max-width: var(--ancho-contenido);
+  background: url(../assets/backgrounds/06-dark-atmosphere.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+    background-position: 100% 100%;
+  border-bottom: var(--borde-fino) solid var(--color-contorno);
+  margin-bottom: var(--espacio-2);
+}
+/* franjas diagonales decorativas */
+/* .app-topbar::before,
+.app-topbar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.app-topbar::before {
+  background: var(--color-secundario);
+  opacity: 0.35;
+  clip-path: polygon(24% 0, 31% 0, 21% 100%, 14% 100%);
+}
+.app-topbar::after {
+  background: var(--color-primario);
+  opacity: 0.18;
+  clip-path: polygon(64% 0, 100% 0, 100% 100%, 50% 100%);
+} */
+
+
+.app-topbar-texto,
+.app-topbar-acciones {
+  position: relative;
+  z-index: 1;
+}
+
+.app-topbar-titulo {
+  font: var(--fuente-titular-2);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+.app-topbar-sub {
+  font: var(--fuente-cuerpo);
+  color: var(--color-texto);
+}
+
+.app-topbar-acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+
+.app-topbar-pildora {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-2) var(--espacio-4);
+  background: color-mix(in srgb, var(--color-fondo) 60%, transparent);
+  border: var(--borde-fino) solid var(--color-primario);
+  border-radius: var(--radio-total);
+  color: var(--color-texto);
+  font: var(--fuente-boton);
+  cursor: pointer;
+}
+.app-topbar-pildora:hover {
+  background: var(--color-primario-suave);
+}
+
+.app-topbar-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radio-total);
+  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
 }
