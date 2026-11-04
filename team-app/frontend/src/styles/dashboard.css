@@ -6,7 +6,7 @@
 
 .single-chart {
   width: 33%;
-  justify-content: space-around ;
+  justify-content: space-around;
 }
 
 .circular-chart {
@@ -35,16 +35,16 @@
   }
 }
 
-.circular-chart.orange .circle {
-  stroke: #ff9f00;
+.circular-chart.good .circle {
+  stroke: var(--color-good);
 }
 
-.circular-chart.green .circle {
-  stroke: #4CC790;
+.circular-chart.warning .circle {
+  stroke: var(--color-warning);
 }
 
-.circular-chart.blue .circle {
-  stroke: #3c9ee5;
+.circular-chart.danger .circle {
+  stroke: var(--color-danger);
 }
 
 .percentage {
@@ -52,4 +52,372 @@
   font-family: sans-serif;
   font-size: 0.5em;
   text-anchor: middle;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  margin: 0;
+  padding: var(--espacio-5);
+  box-sizing: border-box;
+}
+
+/* Grid Layout */
+.dashboard-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-areas:
+    "stats stats"
+    "recruit teams"
+    "recruit missions";
+  gap: var(--espacio-5);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+}
+
+/* Genericos */
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--espacio-4);
+}
+
+.section-title {
+  font: var(--fuente-titular-3);
+  color: var(--color-texto);
+}
+
+.link-button {
+  --button-color: var(--color-primario);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--alto-boton);
+  padding: 0 var(--espacio-4);
+  background-color: var(--button-color);
+  color: var(--color-sobre-terciario);
+  border: var(--borde-fino) solid var(--color-contorno);
+  border-radius: var(--radio-sm);
+  box-shadow: var(--sombra-sm);
+  font: var(--fuente-boton);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicion-rapida), transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.link-button:hover {
+  filter: brightness(1.1);
+  box-shadow: var(--sombra-md);
+  transform: translateY(-1px);
+}
+
+.link-button:active {
+  transform: translateY(0);
+}
+
+/* Secciones */
+/* Stats */
+.stats-container {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--espacio-4);
+  margin-bottom: var(--espacio-6);
+}
+
+.stat {
+  background-color: var(--color-superficie);
+  border: var(--borde-medio) solid var(--color-contorno);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-4);
+  box-shadow: var(--sombra-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat:hover {
+  background-color: var(--color-primario);
+
+  & .stat-number,
+  .stat-text {
+    color: var(--color-sobre-primario);
+  }
+}
+
+.stat-number {
+  font: var(--fuente-titular-2);
+  font-family: var(--fuente-titulo);
+  color: var(--color-sobre-superficie);
+  margin: 0 0 var(--espacio-1) 0;
+  line-height: 1;
+}
+
+.stat-text {
+  font: var(--fuente-nota);
+  color: var(--color-texto-suave);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letras-etiqueta);
+}
+
+/* Recruit */
+.recruit-link {
+  height: 100%;
+  grid-area: recruit;
+}
+
+.recruit-container {
+  height: 100%;
+  background-color: var(--color-superficie);
+  border: var(--borde-medio) solid var(--color-contorno);
+  border-radius: var(--radio-lg);
+  padding: var(--espacio-5);
+  box-shadow: var(--sombra-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+  background: radial-gradient(circle at 50% 80%, var(--color-primario) 0%, transparent 70%),
+    linear-gradient(135deg, var(--color-superficie) 0%, var(--color-fondo) 100%);
+}
+
+.recruit-link:hover .recruit-container {
+  /* transform: translateY(-2px); */
+  border-color: var(--color-primario);
+}
+
+.recruit-subtitle {
+  font: var(--fuente-subtitulo);
+  color: var(--color-texto-suave);
+  margin: 0;
+}
+
+.recruit-img-container {
+  margin-top: var(--espacio-6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/backgrounds/kirby_dots.svg');
+  background-size: 100%;
+}
+
+.recruit-image {
+  width: 40%;
+  object-fit: cover;
+  z-index: 1;
+  animation: pulsating 3s ease-in-out infinite;
+}
+
+@keyframes pulsating {
+  0% {
+    scale: 1;
+    rotate: -5deg;
+  }
+
+  50% {
+    scale: 0.97;
+    rotate: -3deg;
+  }
+
+  100% {
+    scale: 1;
+    rotate: -5deg;
+  }
+}
+
+/* Teams */
+.teams-container {
+  grid-area: teams;
+  background-color: var(--color-superficie);
+  border: var(--borde-medio) solid var(--color-contorno);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  box-shadow: var(--sombra-md);
+}
+
+.teams-link,
+.missions-link {
+  --button-color: var(--color-primario);
+}
+
+.teams-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+}
+
+.teams-list-item {
+  --team-color: var(--color-primario);
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  padding: var(--espacio-2) 0;
+  border-bottom: 1px dashed var(--color-texto-tenue);
+
+  &.team-color-1 {
+    --team-color: var(--color-primario);
+  }
+
+  &.team-color-2 {
+    --team-color: var(--color-secundario);
+  }
+
+  &.team-color-3 {
+    --team-color: var(--color-terciario);
+  }
+}
+
+.teams-list-item:last-child {
+  border-bottom: none;
+}
+
+.team-logo {
+  --size: 44px;
+  width: var(--size);
+  height: var(--size);
+  flex-shrink: 0;
+  object-fit: cover;
+
+  & * {
+    fill: var(--team-color);
+  }
+}
+
+.team-info {
+  flex-grow: 1;
+}
+
+.team-name {
+  font: var(--fuente-titular-3);
+  font-size: var(--texto-md);
+  margin: 0;
+  color: var(--color-texto);
+}
+
+.team-members {
+  font: var(--fuente-nota);
+  color: var(--color-texto-suave);
+  margin: var(--espacio-1) 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 35em;
+}
+
+.team-capacity {
+  font: var(--fuente-dato);
+  font-weight: var(--peso-negrita);
+  color: var(--team-color);
+  margin: 0;
+}
+
+/* Missions */
+.missions-container {
+  grid-area: missions;
+  background-color: var(--color-superficie);
+  border: var(--borde-medio) solid var(--color-contorno);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-5);
+  box-shadow: var(--sombra-md);
+}
+
+.missions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-4);
+}
+
+.mission-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  padding-bottom: var(--espacio-3);
+  border-bottom: 1px dashed var(--color-texto-tenue);
+}
+
+.mission-list-item:last-child {
+  border-bottom: none;
+}
+
+.mission-time-left {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.mission-time-left .single-chart {
+  width: 100%;
+}
+
+.mission-time-left .circular-chart {
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.mission-time-left .circle-bg {
+  stroke: var(--color-superficie-alt);
+}
+
+.mission-time-left .percentage {
+  fill: var(--color-texto);
+  font-family: var(--fuente-mono);
+  font-weight: var(--peso-negrita);
+}
+
+.mission-info {
+  flex-grow: 1;
+}
+
+.mission-info .mission-title {
+  font: var(--fuente-titular-3);
+  font-size: var(--texto-md);
+  color: var(--color-texto);
+  margin: 0 0 var(--espacio-1) 0;
+}
+
+.mission-info .mission-description {
+  font: var(--fuente-cuerpo);
+  font-size: var(--texto-xs);
+  color: var(--color-texto-suave);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mission-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30em;
+}
+
+.mission-link {
+  --button-color: var(--color-terciario);
 }
