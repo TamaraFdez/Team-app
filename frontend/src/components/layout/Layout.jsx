@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import logo from "../../assets/LogoTexto.svg"
 import "../../styles/layout.css"
+import Topbar from './Topbar'
 
 export default function Layout() {
   return (
@@ -11,9 +12,13 @@ export default function Layout() {
         <img className="app-logo" src={logo} alt="Team App" />
         <Navbar />
       </aside>
-      <main className="app-main">
-        <Outlet />
-      </main>
+
+      <div className="app-contenido">
+        <Topbar />
+        <main className="app-main">
+          <Outlet />
+        </main>
+      </div>
     </div>
   )
 }

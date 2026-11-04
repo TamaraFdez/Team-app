@@ -1,15 +1,24 @@
 import { NavLink } from 'react-router-dom'
 
-export default function Navbar() {
+const enlaces = [
+  { to: '/',          texto: 'Panel de Mando',     icono: 'fa-house', end: true },
+  { to: '/reclutar',  texto: 'Reclutar',  icono: 'fa-user-plus' },
+  { to: '/reclutas',  texto: 'Reclutas',  icono: 'fa-users' },
+  { to: '/equipos',   texto: 'Equipos',   icono: 'fa-shield-halved' },
+  { to: '/misiones',  texto: 'Misiones',  icono: 'fa-bolt' },
+  { to: '/historial', texto: 'Historial', icono: 'fa-clock-rotate-left' },
+]
+
+
+ export default function Navbar() {
   return (
     <nav className="app-nav">
-      <NavLink to="/">Principal</NavLink>
-      <NavLink to="/reclutar">Reclutar</NavLink>
-      <NavLink to="/reclutas">Reclutas</NavLink>
-      <NavLink to="/equipos">Equipos</NavLink>
-      <NavLink to="/misiones">Misiones</NavLink>
-      <NavLink to="/historial">Historial</NavLink>
-      
+      {enlaces.map(({ to, texto, icono, end }) => (
+        <NavLink key={to} to={to} end={end}>
+          <i className={`fa-solid ${icono} fa-fw`}></i>
+          <span> {texto}</span>
+        </NavLink>
+      ))}
     </nav>
   )
 }

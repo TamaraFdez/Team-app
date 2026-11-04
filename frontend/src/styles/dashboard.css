@@ -59,7 +59,7 @@ body {
   color: var(--color-texto);
   font-family: var(--fuente-texto);
   margin: 0;
-  padding: var(--espacio-5);
+  padding: 0;
   box-sizing: border-box;
 }
 
