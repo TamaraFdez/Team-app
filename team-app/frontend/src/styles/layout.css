@@ -1,0 +1,70 @@
+/* ── Marco de la app (Layout) ── */
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-aside {
+  width: var(--ancho-aside);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-6);
+  padding: var(--espacio-5) var(--espacio-4);
+background-color: var(--color-superficie);
+
+background-image:
+    linear-gradient(
+        to bottom,
+        var(--color-superficie) 0%,
+        var(--color-superficie) 50%,
+        transparent 100%
+    ),
+    url("./assets/backgrounds/a_wide_cinematic_futuristic_sci_fi_cityscape_at.png");
+
+background-repeat: no-repeat;
+background-position: 30% 350%;
+background-size: 100% 100%, auto 90%;
+
+
+border-right: var(--borde-fino) solid var(--color-borde);
+}
+
+.app-logo {
+  width: 100%;
+  max-width: 170px;
+  height: auto;
+   filter:
+        drop-shadow(var(--sombra-md))
+
+        
+        
+}
+
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.app-nav a {
+  font: var(--fuente-boton);
+  color: var(--color-texto-suave);
+  text-decoration: none;
+  padding: var(--espacio-3);
+  border-radius: var(--radio-sm);
+}
+
+.app-nav a.active {
+  color: var(--color-sobre-primario);
+  background: var(--color-primario);
+}
+
+.app-main {
+  flex: 1;
+  padding: var(--espacio-5);
+  max-width: var(--ancho-contenido);
+}
