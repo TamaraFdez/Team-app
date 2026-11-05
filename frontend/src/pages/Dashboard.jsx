@@ -1,27 +1,28 @@
 import '../styles/dashboard.css'
 import recruitCardImg from '../assets/recruit_card.svg';
+import { NavLink } from 'react-router-dom';
 export default function Dashboard() {
   return <div>
     <div className="dashboard-grid">
       <div className="stats-container">
-        <a href="reclutas" className="stat">
+        <NavLink to="reclutas" className="stat">
           <p className="stat-number">12</p>
           <p className="stat-text">Reclutas totales</p>
-        </a>
-        <a href="equipos" className="stat">
+        </NavLink>
+        <NavLink to="equipos" className="stat">
           <p className="stat-number">3</p>
           <p className="stat-text">Equipos activos</p>
-        </a>
-        <a href="misiones" className="stat">
+        </NavLink>
+        <NavLink to="misiones" className="stat">
           <p className="stat-number">8</p>
           <p className="stat-text">Misiones en curso</p>
-        </a>
-        <a href="historial" className="stat">
+        </NavLink>
+        <NavLink to="historial" className="stat">
           <p className="stat-number">30</p>
           <p className="stat-text">Misiones completadas</p>
-        </a>
+        </NavLink>
       </div>
-      <a href="/reclutar" className="recruit-link">
+      <NavLink to="/reclutar" className="recruit-link">
         <div className="recruit-container">
           <h2 className="recruit-title section-title">Reclutar</h2>
           <h3 className="recruit-subtitle">Recluta nuevos miembros para tus equipos</h3>
@@ -29,11 +30,11 @@ export default function Dashboard() {
             <img src={recruitCardImg} alt="" className="recruit-image" />
           </div>
         </div>
-      </a>
+      </NavLink>
       <div className="teams-container">
         <header className="teams-header section-header">
           <h2 className="teams-title section-title">Equipos</h2>
-          <a href="/equipos" className="teams-link link-button">Ver más</a>
+          <NavLink to="/equipos" className="teams-link link-button">Ver más</NavLink>
         </header>
         <ul className="teams-list">
           <li className="teams-list-item team-color-1">
@@ -71,7 +72,7 @@ export default function Dashboard() {
       <div className="missions-container">
         <header className="missions-header section-header">
           <h2 className="missions-title section-title">Misiones disponibles</h2>
-          <a href="/misiones" className="missions-link link-button">Ver más</a>
+          <NavLink to="/misiones" className="missions-link link-button">Ver más</NavLink>
         </header>
         <ul className="missions-list">
           <li className="mission-list-item">
@@ -98,7 +99,7 @@ export default function Dashboard() {
               <p className="mission-title">Bajar a un gato de un árbol</p>
               <p className="mission-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat iusto, praesentium nesciunt harum, voluptas rerum non commodi porro voluptatem quisquam reiciendis modi amet eius. Maxime sapiente quaerat laudantium officia ut.</p>
             </div>
-            <a href="" className="mission-link link-button">Enviar</a>
+            <NavLink to="" className="mission-link link-button">Enviar</NavLink>
           </li>
           <li className="mission-list-item">
             {/* Sacado de Codepen https://codepen.io/sergiopedercini/pen/jmKdbj */}
@@ -124,7 +125,7 @@ export default function Dashboard() {
               <p className="mission-title">Salvar al presidente</p>
               <p className="mission-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat iusto, praesentium nesciunt harum, voluptas rerum non commodi porro voluptatem quisquam reiciendis modi amet eius. Maxime sapiente quaerat laudantium officia ut.</p>
             </div>
-            <a href="" className="mission-link link-button">Enviar</a>
+            <NavLink to="" className="mission-link link-button">Enviar</NavLink>
           </li>
           <li className="mission-list-item">
             {/* Sacado de Codepen https://codepen.io/sergiopedercini/pen/jmKdbj */}
@@ -150,7 +151,7 @@ export default function Dashboard() {
               <p className="mission-title">Robar un banco</p>
               <p className="mission-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat iusto, praesentium nesciunt harum, voluptas rerum non commodi porro voluptatem quisquam reiciendis modi amet eius. Maxime sapiente quaerat laudantium officia ut.</p>
             </div>
-            <a href="" className="mission-link link-button">Enviar</a>
+            <NavLink to="" className="mission-link link-button">Enviar</NavLink>
           </li>
         </ul>
       </div>
