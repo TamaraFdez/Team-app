@@ -10,13 +10,14 @@ import Reclutar from "./pages/Reclutar";
 import Historial from "./pages/Historial";
 import NoEncontrado from "./pages/NoEncontrado";
 import Dashboard from "./pages/Dashboard";
-import DevAuth from './components/devAuth'
+import { AuthProvider } from "../src/context/AuthContext";
 
 
 export default function App() {
   return (<>
+  <AuthProvider>
    {/* Token falso solo DEV */}
-    {import.meta.env.DEV && <DevAuth />}
+   
  <Routes>
   {/* Páginas públicas */}
   <Route path="/sesion" element={<Login />} />
@@ -35,6 +36,7 @@ export default function App() {
     </Route>
   </Route>
 </Routes>
+</AuthProvider>
 </>
   );
 }

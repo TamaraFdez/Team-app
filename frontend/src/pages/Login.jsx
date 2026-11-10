@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
+import { useAuth } from "../context/useAuth";
 import "../styles/auth.css";
 import logo from "../../public/Logo/Logo.svg";
+import authBackground from "../assets/backgrounds/siluetas-1.png";
 
 export default function Login() {
   const [nombreUsuario, setNombreUsuario] = useState("");
@@ -11,6 +13,7 @@ export default function Login() {
   const [cargando, setCargando] = useState(false);
 
   const navigate = useNavigate();
+  const { comprobarSesion } = useAuth();
 
   async function enviar(e) {
     e.preventDefault();
@@ -18,9 +21,13 @@ export default function Login() {
     setCargando(true);
 
     try {
-      const { token } = await login({ nombreUsuario, password });
+      await login({ nombreUsuario, password });
 
-      localStorage.setItem("token", token);
+      const usuario = await comprobarSesion();
+
+      if (!usuario) {
+        throw new Error("No se ha podido comprobar la sesión.");
+      }
       navigate("/");
     } catch (err) {
       setError(err.message || "No se ha podido iniciar sesión.");
@@ -33,7 +40,8 @@ export default function Login() {
     <main className="auth-escena">
       <div className="auth-layout">
         <aside className="auth-ilustracion auth-heroes">
-          <img src="../assets/backgrounds/siluetas-1.png" alt="Siluetas de heroes y villanos" />
+          <img src={authBackground} alt="Siluetas de héroes y villanos" />
+
           <div className="auth-ilustracion-texto">
             <span>TEAM APP / HEROES</span>
             <h2>El destino necesita héroes.</h2>
@@ -51,6 +59,7 @@ export default function Login() {
           <div className="auth-tarjeta">
             <span className="auth-etiqueta">ACCESO DE COMANDANTE</span>
             <h2>Bienvenido de nuevo</h2>
+
             <p className="auth-descripcion">
               Introduce tus credenciales para continuar.
             </p>
