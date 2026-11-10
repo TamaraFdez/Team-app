@@ -30,3 +30,8 @@ npm run build
 
 ## Alcance y siguientes pasos
 Esta entrega es una **base visual funcional de frontend**, no una aplicación conectada todavía a Express, MySQL ni a la API externa de Superhero API. Los datos se encuentran en `src/App.jsx` para facilitar su sustitución posterior por llamadas a la API.
+
+
+# Recursos
+- Material UI: Página para coger componentes ya hechos de react sencillitos (Breadcrumbs, stack, badge, avatar, tooltip, progress, drawer  etc)
+-  

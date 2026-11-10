@@ -76,13 +76,6 @@ body {
   align-items: start;
 }
 
-@media (max-width: 900px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas: none;
-  }
-}
-
 /* Genericos */
 a {
   text-decoration: none;
@@ -190,9 +183,6 @@ a {
   padding: var(--espacio-5);
   box-shadow: var(--sombra-lg);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
   background: radial-gradient(circle at 50% 80%, var(--color-primario) 0%, transparent 70%),
     linear-gradient(135deg, var(--color-superficie) 0%, var(--color-fondo) 100%);
@@ -244,6 +234,7 @@ a {
 
 /* Teams */
 .teams-container {
+  max-width: 40vw;
   grid-area: teams;
   background-color: var(--color-superficie);
   border: var(--borde-medio) solid var(--color-contorno);
@@ -296,7 +287,6 @@ a {
   width: var(--size);
   height: var(--size);
   flex-shrink: 0;
-  object-fit: cover;
 
   & * {
     fill: var(--team-color);
@@ -305,6 +295,7 @@ a {
 
 .team-info {
   flex-grow: 1;
+  min-width: 0;
 }
 
 .team-name {
@@ -321,7 +312,6 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 35em;
 }
 
 .team-capacity {
@@ -333,6 +323,7 @@ a {
 
 /* Missions */
 .missions-container {
+  max-width: 40vw;
   grid-area: missions;
   background-color: var(--color-superficie);
   border: var(--borde-medio) solid var(--color-contorno);
@@ -390,6 +381,7 @@ a {
 
 .mission-info {
   flex-grow: 1;
+  min-width: 0;
 }
 
 .mission-info .mission-title {
@@ -420,4 +412,33 @@ a {
 
 .mission-link {
   --button-color: var(--color-terciario);
+}
+
+@media (max-width: 1300px) {
+  .recruit-image {
+    width: 70%;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "stats"
+    "recruit"
+    "teams"
+    "missions";
+  }
+
+  .teams-container {
+    max-width: none;
+  }
+
+  .missions-container {
+    max-width: none;
+  }
+
+  .recruit-img-container {
+    display: none;
+  }
 }
