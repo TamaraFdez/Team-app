@@ -1,16 +1,115 @@
 
-/* ─────────────────────────────────
-   AUTENTICACIÓN
-───────────────────────────────── */
+/* ═══════════════════════════════════════
+   AUTENTICACIÓN - TEAM APP
+═══════════════════════════════════════ */
 
 .auth-escena {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 20px;
+  padding: 35px;
   color: var(--color-texto);
 }
+
+.auth-layout {
+  width: 100%;
+  max-width: 1300px;
+  min-height: 700px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.9fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 75px);
+}
+
+/* ═══════════════════════════════════════
+   ILUSTRACIÓN
+═══════════════════════════════════════ */
+
+.auth-ilustracion {
+  position: relative;
+  height: 680px;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 20px;
+  background: #100b2b;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.auth-ilustracion img {
+  position: absolute;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Mostrar únicamente la mitad de los héroes */
+
+.auth-heroes img {
+  left: 0;
+}
+
+/* Mostrar únicamente la mitad de los villanos */
+
+.auth-villanos img {
+  left: -100%;
+}
+
+/* Degradado para mejorar la lectura del texto */
+
+.auth-ilustracion::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(5, 7, 24, 0.95) 0%,
+    rgba(5, 7, 24, 0.5) 35%,
+    rgba(5, 7, 24, 0.05) 100%
+  );
+}
+
+/* Texto sobre la imagen */
+
+.auth-ilustracion-texto {
+  position: absolute;
+  left: 35px;
+  right: 35px;
+  bottom: 40px;
+}
+
+.auth-ilustracion-texto span {
+  color: #19e3ff;
+  font-family: var(--fuente-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+}
+
+.auth-ilustracion-texto h2 {
+  max-width: 480px;
+  margin: 12px 0;
+  color: #fff;
+  font-family: var(--fuente-titulo, sans-serif);
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+}
+
+.auth-ilustracion-texto p {
+  max-width: 400px;
+  margin: 0;
+  color: #c5c8df;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   MARCA Y CONTENEDOR
+═══════════════════════════════════════ */
 
 .auth-contenedor {
   width: 100%;
@@ -24,7 +123,6 @@
 
 .auth-marca {
   text-align: center;
- 
 }
 
 .auth-logo {
@@ -45,6 +143,10 @@
   color: var(--color-texto-secundario, #A7B0CC);
   font-size: 0.9rem;
 }
+
+/* ═══════════════════════════════════════
+   TARJETA
+═══════════════════════════════════════ */
 
 .auth-tarjeta {
   padding: 32px;
@@ -74,7 +176,9 @@
   line-height: 1.5;
 }
 
-/* Formulario */
+/* ═══════════════════════════════════════
+   FORMULARIO
+═══════════════════════════════════════ */
 
 .auth-formulario {
   display: flex;
@@ -132,7 +236,9 @@
   cursor: wait;
 }
 
-/* Alineamiento 3 x 3 */
+/* ═══════════════════════════════════════
+   ALINEAMIENTO 3 X 3
+═══════════════════════════════════════ */
 
 .auth-alineamiento {
   min-width: 0;
@@ -193,7 +299,9 @@
   outline-offset: 3px;
 }
 
-/* Mensajes y navegación */
+/* ═══════════════════════════════════════
+   ERRORES Y NAVEGACIÓN
+═══════════════════════════════════════ */
 
 .auth-error {
   margin: 5px 0;
@@ -218,13 +326,77 @@
   text-decoration: underline;
 }
 
-/* Responsive */
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
 
-@media (max-width: 480px) {
+@media (max-width: 1050px) {
+  .auth-escena {
+    padding: 25px;
+  }
+
+  .auth-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(350px, 1.1fr);
+    gap: 25px;
+  }
+
+  .auth-ilustracion {
+    height: 620px;
+  }
+
+  .auth-ilustracion-texto {
+    left: 22px;
+    right: 22px;
+    bottom: 25px;
+  }
+
+  .auth-ilustracion-texto h2 {
+    font-size: 2rem;
+  }
+
+  .auth-tarjeta {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 760px) {
   .auth-escena {
     padding: 25px 14px;
   }
 
+  .auth-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .auth-ilustracion {
+    width: 100%;
+    height: 220px;
+    min-height: 220px;
+  }
+
+  .auth-ilustracion-texto {
+    left: 22px;
+    right: 22px;
+    bottom: 18px;
+  }
+
+  .auth-ilustracion-texto h2 {
+    font-size: 1.7rem;
+  }
+
+  .auth-ilustracion-texto p {
+    font-size: 0.82rem;
+  }
+
+  .auth-contenedor,
+  .auth-contenedor-registro {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 480px) {
   .auth-tarjeta {
     padding: 23px 18px;
   }

@@ -1,17 +1,18 @@
-
 import express from 'express'
+import cookieParser from 'cookie-parser'
+import authRoutes from './routes/auth.routes.js'
 
 const app = express()
 
-// Permite recibir JSON en las peticiones
 app.use(express.json())
+app.use(cookieParser())
 
-// Ruta de comprobación
 app.get('/api/health', (req, res) => {
   res.json({
-    estado: 'OK',
+    ok: true,
     mensaje: 'Backend de Team-App funcionando'
   })
 })
 
+app.use('/api/auth', authRoutes)
 export default app

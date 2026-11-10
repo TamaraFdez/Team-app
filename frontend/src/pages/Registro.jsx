@@ -49,7 +49,17 @@ export default function Registro() {
   }
 
   return (
-    <main className="auth-escena">
+     <main className="auth-escena">
+    <div className="auth-layout">
+
+      <aside className="auth-ilustracion auth-villanos">
+        <img src="/images/auth-siluetas.png" alt="" />
+        <div className="auth-ilustracion-texto">
+          <span>TEAM APP / VILLAINS</span>
+          <h2>El poder también tiene un precio.</h2>
+          <p>Elige tu camino. Reúne a tus aliados. Cambia las reglas.</p>
+        </div>
+      </aside>
       <section className="auth-contenedor auth-contenedor-registro">
         <header className="auth-marca">
           <img className="auth-logo" src={logo} alt="Team App" />
@@ -124,6 +134,7 @@ export default function Registro() {
           </p>
         </div>
       </section>
+      </div>
     </main>
   )
 }

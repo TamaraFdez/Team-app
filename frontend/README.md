@@ -1,9 +1,9 @@
 # Team-App — frontend inicial
 
 Implementación frontend en React + Vite para las tres pantallas prioritarias:
-- **Overview**: resumen operativo, equipos, actividad y estado global.
-- **Recruit**: catálogo de candidatos con filtros, búsqueda y acciones de reclutamiento.
-- **Teams**: creación de equipos, selección de unidad y asignación de integrantes.
+- **Dashboard**: resumen operativo, equipos, actividad y estado global.
+- **Recluta**: catálogo de candidatos con filtros, búsqueda y acciones de reclutamiento.
+- **Equipos**: creación de equipos, selección de unidad y asignación de integrantes.
 
 ## Requisitos
 - Node.js 18 o superior

@@ -1,7 +1,4 @@
-
 import mysql from 'mysql2/promise'
-
-
 //createpool para administrar conjunto de peticiones y administrarlas
 const db = mysql.createPool({
   host: process.env.DB_HOST,
