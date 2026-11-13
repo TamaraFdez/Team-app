@@ -1,9 +1,3 @@
-
-/* =========================================================
-   AUTH — LOGIN Y REGISTRO
-   Utiliza las variables globales del sistema de diseño.
-   ========================================================= */
-
 /* =========================================================
    ESCENA Y FONDO
    ========================================================= */
@@ -37,11 +31,11 @@
 
 .auth-layout {
   width: 100%;
-  max-width: 1250px;
-  min-height: 680px;
+  max-width: var(--ancho-auth);
+  min-height: var(--alto-auth);
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
+  grid-template-columns: minmax(0, 1fr) minmax(var(--ancho-formulario-auth), 0.85fr);
 
   overflow: hidden;
 
@@ -59,7 +53,7 @@
 .auth-ilustracion {
   position: relative;
   min-width: 0;
-  min-height: 680px;
+  min-height: var(--alto-auth);
 
   overflow: hidden;
   isolation: isolate;
@@ -80,11 +74,6 @@
   object-position: center;
 
   z-index: -2;
-}
-
-/* Héroes: mitad izquierda */
-.auth-heroes img {
-  left: 0;
 }
 
 /* Villanos: mitad derecha */
@@ -115,7 +104,7 @@
   bottom: var(--espacio-7);
 
   z-index: 1;
-  color: #fff;
+  color: var(--color-sobre-fondo);
 }
 
 .auth-ilustracion-texto span {
@@ -125,7 +114,7 @@
   color: var(--color-primario);
   font: var(--fuente-nota);
   font-weight: var(--peso-extra);
-  letter-spacing: 0.2em;
+  letter-spacing: var(--letras-destacado);
 }
 
 .auth-ilustracion-texto h2 {
@@ -137,10 +126,10 @@
 }
 
 .auth-ilustracion-texto p {
-  max-width: 430px;
+  max-width: var(--ancho-parrafo);
   margin: 0;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--color-texto-suave);
   font: var(--fuente-cuerpo);
 }
 
@@ -149,22 +138,14 @@
    ========================================================= */
 
 .auth-contenedor {
-  width: 100%;
   min-width: 0;
-  max-width: none;
-
-  margin: 0;
-  padding: var(--espacio-6) clamp(28px, 4vw, 65px);
+  padding: var(--espacio-6) clamp(var(--espacio-5), 4vw, var(--espacio-8));
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   background: var(--color-superficie);
-}
-
-.auth-contenedor-registro {
-  max-width: none;
 }
 
 /* =========================================================
@@ -181,24 +162,21 @@
 }
 
 .auth-logo {
-  display: block;
   width: auto;
-  height: 78px;
+  height: var(--alto-logo-auth);
 
   margin: 0 auto var(--espacio-2);
   object-fit: contain;
 }
 
 .auth-marca h1 {
-  margin: 0;
-
   color: var(--color-texto);
   font: var(--fuente-titular-3);
-  letter-spacing: 0.12em;
+  letter-spacing: var(--letras-marca);
 }
 
 .auth-marca p {
-  margin: var(--espacio-2) 0 0;
+  margin-top: var(--espacio-2);
 
   color: var(--color-texto-suave);
   font: var(--fuente-cuerpo);
@@ -207,17 +185,6 @@
 /* =========================================================
    CONTENIDO DEL FORMULARIO
    ========================================================= */
-
-.auth-tarjeta {
-  width: 100%;
-  padding: 0;
-
-  border: none;
-  border-radius: 0;
-
-  background: transparent;
-  box-shadow: none;
-}
 
 .auth-etiqueta {
   display: block;
@@ -230,14 +197,14 @@
 }
 
 .auth-tarjeta h2 {
-  margin: 0 0 var(--espacio-2);
+  margin-bottom: var(--espacio-2);
 
   color: var(--color-texto);
   font: var(--fuente-titular-3);
 }
 
 .auth-descripcion {
-  margin: 0 0 var(--espacio-5);
+  margin-bottom: var(--espacio-5);
 
   color: var(--color-texto-suave);
   font: var(--fuente-cuerpo);
@@ -292,23 +259,41 @@
   box-shadow: var(--sombra-sm);
 }
 
-/* =========================================================
-   GRID DE ALINEAMIENTOS
-   ========================================================= */
-
-.auth-alineamiento {
-  margin: var(--espacio-2) 0 0;
-  padding: 0;
+.auth-alineamiento,
+.auth-avatares {
+  margin-top: var(--espacio-2);
   border: none;
 }
 
-.auth-alineamiento legend {
+.auth-alineamiento legend,
+.auth-avatares legend {
   margin-bottom: var(--espacio-3);
 
   color: var(--color-texto);
   font: var(--fuente-cuerpo);
   font-weight: var(--peso-semi);
 }
+
+.auth-opcion-alineamiento,
+.auth-opcion-avatar {
+  position: relative;
+  min-width: 0;
+  cursor: pointer;
+}
+
+/* Ocultamos el radio original, pero sigue siendo accesible */
+.auth-opcion-alineamiento input,
+.auth-opcion-avatar input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   GRID DE ALINEAMIENTOS
+   ========================================================= */
 
 /* Las nueve opciones en una cuadrícula de 3 x 3 */
 .auth-grid-alineamiento {
@@ -317,24 +302,9 @@
   gap: var(--espacio-2);
 }
 
-/* Cada opción */
-.auth-opcion-alineamiento {
-  position: relative;
-  min-width: 0;
-  cursor: pointer;
-}
-
-/* Ocultamos el radio original, pero sigue siendo accesible */
-.auth-opcion-alineamiento input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
 /* Aspecto visual de cada alineamiento */
 .auth-opcion-alineamiento span {
-  min-height: 44px;
+  min-height: var(--alto-boton);
   padding: var(--espacio-2);
 
   display: flex;
@@ -371,14 +341,56 @@
   border-color: var(--color-primario);
   background: var(--color-primario-suave);
   color: var(--color-primario);
-
   box-shadow: var(--sombra-sm);
 }
 
 /* Accesibilidad con teclado */
 .auth-opcion-alineamiento input:focus-visible + span {
   outline: var(--borde-medio) solid var(--color-foco);
-  outline-offset: 3px;
+  outline-offset: var(--espacio-1);
+}
+
+/* =========================================================
+   GRID DE AVATARES
+   ========================================================= */
+
+.auth-grid-avatares {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--espacio-3);
+}
+
+.auth-opcion-avatar img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+
+  border: var(--borde-grueso) solid transparent;
+  border-radius: var(--radio-total);
+
+  opacity: 0.7;
+
+  transition:
+    opacity var(--transicion-media),
+    transform var(--transicion-media),
+    border-color var(--transicion-media),
+    box-shadow var(--transicion-media);
+}
+
+.auth-opcion-avatar:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.auth-opcion-avatar.seleccionado img {
+  opacity: 1;
+  border-color: var(--color-primario);
+  box-shadow: var(--sombra-md);
+}
+
+.auth-opcion-avatar input:focus-visible + img {
+  outline: var(--borde-medio) solid var(--color-foco);
+  outline-offset: var(--espacio-1);
 }
 
 /* =========================================================
@@ -386,7 +398,6 @@
    ========================================================= */
 
 .auth-error {
-  margin: 0;
   padding: var(--espacio-3) var(--espacio-4);
 
   border: var(--borde-fino) solid var(--color-error);
@@ -430,7 +441,7 @@
 .auth-formulario > button:hover:not(:disabled) {
   background: var(--color-primario-hover);
   border-color: var(--color-primario-hover);
-  transform: translateY(-2px);
+  transform: translateY(calc(var(--borde-medio) * -1));
   box-shadow: var(--sombra-md);
 }
 
@@ -449,7 +460,7 @@
    ========================================================= */
 
 .auth-enlace {
-  margin: var(--espacio-5) 0 0;
+  margin-top: var(--espacio-5);
 
   color: var(--color-texto-suave);
   font: var(--fuente-cuerpo);
@@ -457,12 +468,13 @@
 }
 
 .auth-enlace a {
+  display: inline;
   color: var(--color-primario);
   font-weight: var(--peso-extra);
 
   text-decoration: underline;
   text-decoration-color: var(--color-primario);
-  text-underline-offset: 4px;
+  text-underline-offset: var(--espacio-1);
 
   transition: color var(--transicion-media);
 }
@@ -477,7 +489,7 @@
    ========================================================= */
 
 .auth-layout:has(.auth-villanos) {
-  grid-template-columns: minmax(420px, 0.85fr) minmax(0, 1fr);
+  grid-template-columns: minmax(var(--ancho-formulario-auth), 0.85fr) minmax(0, 1fr);
 }
 
 .auth-layout:has(.auth-villanos) .auth-villanos {
@@ -500,12 +512,12 @@
   }
 
   .auth-layout {
-    min-height: 620px;
-    grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+    min-height: var(--alto-auth-tablet);
+    grid-template-columns: minmax(0, 0.9fr) minmax(var(--ancho-formulario-auth-tablet), 1.1fr);
   }
 
   .auth-ilustracion {
-    min-height: 620px;
+    min-height: var(--alto-auth-tablet);
   }
 
   .auth-contenedor {
@@ -519,11 +531,11 @@
   }
 
   .auth-ilustracion-texto h2 {
-    font-size: var(--texto-2xl);
+    font-size: var(--texto-xl);
   }
 
   .auth-layout:has(.auth-villanos) {
-    grid-template-columns: minmax(360px, 1.1fr) minmax(0, 0.9fr);
+    grid-template-columns: minmax(var(--ancho-formulario-auth-tablet), 1.1fr) minmax(0, 0.9fr);
   }
 }
 
@@ -533,18 +545,17 @@
 
 @media (max-width: 720px) {
   .auth-escena {
-    min-height: 100vh;
     padding: var(--espacio-3);
     align-items: flex-start;
   }
 
   .auth-layout,
   .auth-layout:has(.auth-villanos) {
-    max-width: 520px;
+    max-width: var(--ancho-auth-movil);
     min-height: auto;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 230px auto;
+    grid-template-rows: var(--alto-ilustracion-auth) auto;
 
     border-radius: var(--radio-md);
   }
@@ -554,8 +565,8 @@
     grid-column: 1;
     grid-row: 1;
 
-    min-height: 230px;
-    height: 230px;
+    min-height: var(--alto-ilustracion-auth);
+    height: var(--alto-ilustracion-auth);
   }
 
   .auth-contenedor,
@@ -586,7 +597,7 @@
   }
 
   .auth-logo {
-    height: 65px;
+    height: var(--espacio-8);
   }
 
   .auth-marca {
@@ -605,13 +616,13 @@
 
   .auth-layout,
   .auth-layout:has(.auth-villanos) {
-    grid-template-rows: 200px auto;
+    grid-template-rows: var(--alto-ilustracion-auth-sm) auto;
   }
 
   .auth-ilustracion,
   .auth-layout:has(.auth-villanos) .auth-villanos {
-    min-height: 200px;
-    height: 200px;
+    min-height: var(--alto-ilustracion-auth-sm);
+    height: var(--alto-ilustracion-auth-sm);
   }
 
   .auth-contenedor,
@@ -619,13 +630,14 @@
     padding: var(--espacio-4) var(--espacio-3);
   }
 
-  .auth-grid-alineamiento {
+  .auth-grid-alineamiento,
+  .auth-grid-avatares {
     gap: var(--espacio-1);
   }
 
   .auth-opcion-alineamiento span {
-    min-height: 40px;
+    min-height: var(--alto-pildora);
     padding: var(--espacio-1);
-    font-size: 0.68rem;
+    font-size: var(--texto-xs);
   }
 }

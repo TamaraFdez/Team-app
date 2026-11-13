@@ -56,6 +56,8 @@
   --interlineado-texto:  1.5;
   --letras-titulo:       0.02em;
   --letras-etiqueta:     0.08em;
+  --letras-marca:        0.12em;
+  --letras-destacado:    0.2em;
 
   /* ── FORMAS · figuras recortadas ─────────────────────────────── */
   /* Ficha cortada: rectángulo con la esquina inferior derecha cortada
@@ -99,6 +101,28 @@
   --alto-navbar:      64px;
   --ancho-carta:      340px;
   --alto-boton:       44px;
+  --alto-pildora:     40px;
+  --alto-topbar:      112px;
+  --ancho-logo-aside: 170px;
+  --ancho-desplegable: 210px;
+  --ancho-min-stat:   180px;
+  --ancho-parrafo:    430px;
+  --borde-separador:  1px;
+
+  --tamano-avatar-sm: 26px;
+  --tamano-icono:     44px;
+  --tamano-grafico:   48px;
+  --tamano-spinner:   56px;
+
+  --ancho-auth:                  1250px;
+  --ancho-auth-movil:            520px;
+  --alto-auth:                   680px;
+  --alto-auth-tablet:            620px;
+  --ancho-formulario-auth:       420px;
+  --ancho-formulario-auth-tablet: 360px;
+  --alto-ilustracion-auth:       230px;
+  --alto-ilustracion-auth-sm:    200px;
+  --alto-logo-auth:              78px;
 
   /* ── MOVIMIENTO ──────────────────────────────────────────────── */
   --transicion-rapida: 120ms ease;
@@ -177,10 +201,6 @@
   --color-sobre-superficie:     #F4F1FA;
   --color-sobre-error:          #FFFFFF;
   --color-sobre-terciario:      #13101F;
-
-  --color-good: #4CC790;
-  --color-warning: #ff9f00;
-  --color-danger: #fc3a3a;
 
   /* contorno: borde negro de 3px */
   --color-contorno: #000000;

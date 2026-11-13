@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
 import { useAuth } from "../context/useAuth";
 import "../styles/auth.css";
-import logo from "../../public/Logo/Logo.svg";
 import authBackground from "../assets/backgrounds/siluetas-1.png";
 
 export default function Login() {
@@ -13,7 +12,7 @@ export default function Login() {
   const [cargando, setCargando] = useState(false);
 
   const navigate = useNavigate();
-  const { comprobarSesion } = useAuth();
+  const { guardarUsuario } = useAuth();
 
   async function enviar(e) {
     e.preventDefault();
@@ -21,13 +20,8 @@ export default function Login() {
     setCargando(true);
 
     try {
-      await login({ nombreUsuario, password });
-
-      const usuario = await comprobarSesion();
-
-      if (!usuario) {
-        throw new Error("No se ha podido comprobar la sesión.");
-      }
+      const data = await login({ nombreUsuario, password });
+      guardarUsuario(data.usuario);
       navigate("/");
     } catch (err) {
       setError(err.message || "No se ha podido iniciar sesión.");
@@ -51,7 +45,7 @@ export default function Login() {
 
         <section className="auth-contenedor">
           <header className="auth-marca">
-            <img className="auth-logo" src={logo} alt="Team App" />
+            <img className="auth-logo" src="/Logo/Logo.svg" alt="Team App" />
             <h1>TEAM APP</h1>
             <p>Tu próxima aventura comienza aquí</p>
           </header>

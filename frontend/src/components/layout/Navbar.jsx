@@ -9,13 +9,12 @@ const enlaces = [
   { to: '/historial', texto: 'Historial', icono: 'fa-clock-rotate-left' },
 ]
 
-
- export default function Navbar() {
+export default function Navbar({ onNavegar }) {
   return (
     <nav className="app-nav">
       {enlaces.map(({ to, texto, icono, end }) => (
-        <NavLink key={to} to={to} end={end}>
-          <i className={`fa-solid ${icono} fa-fw`}></i>
+        <NavLink key={to} to={to} end={end} onClick={onNavegar}>
+          <i className={`fa-solid ${icono} fa-fw`} aria-hidden="true"></i>
           <span> {texto}</span>
         </NavLink>
       ))}

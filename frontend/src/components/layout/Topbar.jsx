@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/useAuth'
+import { rutaAvatar } from '../../data/avatares'
 
 const paginas = {
   '/': {
@@ -30,7 +31,7 @@ const paginas = {
   }
 }
 
-export default function Topbar() {
+export default function Topbar({ menuLateralAbierto, onAlternarMenuLateral }) {
   const { pathname } = useLocation()
   const { usuario, cerrarSesion } = useAuth()
 
@@ -60,6 +61,16 @@ export default function Topbar() {
 
   return (
     <header className="app-topbar">
+      <button
+        className="app-topbar-pildora app-topbar-hamburguesa"
+        onClick={onAlternarMenuLateral}
+        aria-label="Abrir menú"
+        aria-expanded={menuLateralAbierto}
+        aria-controls="menu-lateral"
+      >
+        <i className="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
       <div className="app-topbar-texto">
         <h1 className="app-topbar-titulo">
           {pagina.titulo}
@@ -72,8 +83,10 @@ export default function Topbar() {
         <button
           className="app-topbar-pildora"
           onClick={alternarTema}
+          aria-label={`Cambiar estilo (actual: ${tema})`}
         >
-          Estilo: {tema}
+          <i className="fa-solid fa-palette" aria-hidden="true"></i>
+          <span className="app-topbar-ocultable">Estilo: {tema}</span>
         </button>
 
         <div className="app-topbar-menu">
@@ -82,12 +95,17 @@ export default function Topbar() {
             onClick={() => setMenuAbierto(!menuAbierto)}
             aria-expanded={menuAbierto}
             aria-haspopup="true"
+            aria-label={`Menú de ${usuario?.nombreUsuario ?? 'usuario'}`}
           >
             <span className="app-topbar-avatar">
-              {usuario?.nombreUsuario?.charAt(0).toUpperCase()}
+              {usuario?.avatar
+                ? <img src={rutaAvatar(usuario.avatar)} alt="" />
+                : usuario?.nombreUsuario?.charAt(0).toUpperCase()}
             </span>
 
-            {usuario?.nombreUsuario ?? 'Usuario'}
+            <span className="app-topbar-ocultable">
+              {usuario?.nombreUsuario ?? 'Usuario'}
+            </span>
 
             <span className="app-topbar-flecha">
               {menuAbierto ? '▲' : '▼'}

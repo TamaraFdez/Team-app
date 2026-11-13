@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { registro } from "../api/auth";
 import { useAuth } from "../context/useAuth";
 import "../styles/auth.css";
-import logo from "../../public/Logo/Logo.svg";
 import authBackground from "../assets/backgrounds/siluetas-1.png";
+import { AVATARES, rutaAvatar } from "../data/avatares";
 
 const alineamientos = [
   "Lawful Good",
@@ -24,9 +24,10 @@ export default function Registro() {
   const [alineamiento, setAlineamiento] = useState("");
   const [error, setError] = useState("");
   const [cargando, setCargando] = useState(false);
+  const [avatar, setAvatar] = useState(null);
 
   const navigate = useNavigate();
-  const { comprobarSesion } = useAuth();
+  const { guardarUsuario } = useAuth();
 
   async function enviar(e) {
     e.preventDefault();
@@ -34,16 +35,13 @@ export default function Registro() {
     setCargando(true);
 
     try {
-      await registro({
+      const data = await registro({
         nombreUsuario,
         password,
         alineamiento,
+        avatar,
       });
-
-      const usuario = await comprobarSesion();
-      if (!usuario) {
-        throw new Error("No se ha podido comprobar la sesión.");
-      }
+      guardarUsuario(data.usuario);
       navigate("/");
     } catch (err) {
       setError(err.message || "No se ha podido crear la cuenta.");
@@ -65,9 +63,9 @@ export default function Registro() {
           </div>
         </aside>
 
-        <section className="auth-contenedor auth-contenedor-registro">
+        <section className="auth-contenedor">
           <header className="auth-marca">
-            <img className="auth-logo" src={logo} alt="Team App" />
+            <img className="auth-logo" src="/Logo/Logo.svg" alt="Team App" />
             <h1>TEAM APP</h1>
             <p>Encuentra tu equipo. Vive la aventura.</p>
           </header>
@@ -89,6 +87,8 @@ export default function Registro() {
                 onChange={(e) => setNombreUsuario(e.target.value)}
                 placeholder="Elige un nombre de usuario"
                 autoComplete="username"
+                minLength={3}
+                maxLength={50}
                 required
               />
 
@@ -100,6 +100,8 @@ export default function Registro() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Crea una contraseña"
                 autoComplete="new-password"
+                minLength={8}
+                maxLength={72}
                 required
               />
 
@@ -110,9 +112,7 @@ export default function Registro() {
                   {alineamientos.map((item) => (
                     <label
                       key={item}
-                      className={`auth-opcion-alineamiento ${
-                        alineamiento === item ? "seleccionado" : ""
-                      }`}
+                      className={`auth-opcion-alineamiento ${alineamiento === item ? "seleccionado" : ""}`}
                     >
                       <input
                         type="radio"
@@ -123,6 +123,27 @@ export default function Registro() {
                         required
                       />
                       <span>{item}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <fieldset className="auth-avatares">
+                <legend>Elige tu avatar (opcional)</legend>
+
+                <div className="auth-grid-avatares">
+                  {AVATARES.map((id) => (
+                    <label
+                      key={id}
+                      className={`auth-opcion-avatar ${avatar === id ? "seleccionado" : ""}`}
+                    >
+                      <input
+                        type="radio"
+                        name="avatar"
+                        value={id}
+                        checked={avatar === id}
+                        onChange={() => setAvatar(id)}
+                      />
+                      <img src={rutaAvatar(id)} alt={`Avatar ${id}`} />
                     </label>
                   ))}
                 </div>

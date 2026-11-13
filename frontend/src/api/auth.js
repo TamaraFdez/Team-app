@@ -1,41 +1,21 @@
-async function enviar(ruta, datos = null, metodo = "POST") {
-  const opciones = {
-    method: metodo,
-    credentials: "include",
-  };
-
-  if (datos !== null) {
-    opciones.headers = {
-      "Content-Type": "application/json",
-    };
-    opciones.body = JSON.stringify(datos);
-  }
-
-  const res = await fetch(`/api/auth/${ruta}`, opciones);
-  const json = await res.json();
-
-  if (!res.ok) {
-    throw new Error(json.mensaje || json.error || "Error");
-  }
-
-  return json;
-}
+import { enviar } from "./cliente";
 
 export const registro = (datos) =>
-  enviar("register", {
+  enviar("auth/register", {
     nombreUsuario: datos.nombreUsuario,
     contrasena: datos.password,
     alineamiento: datos.alineamiento,
+    avatar: datos.avatar || null,
   });
 
 export const login = (datos) =>
-  enviar("login", {
+  enviar("auth/login", {
     nombreUsuario: datos.nombreUsuario,
     contrasena: datos.password,
   });
 
 export const obtenerSesion = () =>
-  enviar("me", null, "GET");
+  enviar("auth/me", null, "GET");
 
 export const cerrarSesionAPI = () =>
-  enviar("logout");
+  enviar("auth/logout");

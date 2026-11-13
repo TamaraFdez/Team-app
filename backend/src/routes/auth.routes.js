@@ -1,5 +1,5 @@
-
 import { Router } from 'express'
+import rateLimit from 'express-rate-limit'
 
 import {
   registrar,
@@ -12,8 +12,16 @@ import { verificarToken } from '../middleware/auth.middleware.js'
 
 const router = Router()
 
-router.post('/register', registrar)
-router.post('/login', iniciarSesion)
+const limiteAuth = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  limit: 10,                // 10 intentos por IP en esa ventana
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { mensaje: 'Demasiados intentos. Espera unos minutos.' }
+})
+
+router.post('/register', limiteAuth, registrar)
+router.post('/login', limiteAuth, iniciarSesion)
 
 // Rutas que necesitan autenticación
 router.get('/me', verificarToken, obtenerSesion)

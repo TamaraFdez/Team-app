@@ -10,19 +10,19 @@ import Reclutar from "./pages/Reclutar";
 import Historial from "./pages/Historial";
 import NoEncontrado from "./pages/NoEncontrado";
 import Dashboard from "./pages/Dashboard";
-import { AuthProvider } from "../src/context/AuthContext";
+import { AuthProvider } from "./context/AuthContext";
+import PublicRoute from "./routes/PublicRoutes";
 
 
 export default function App() {
   return (<>
   <AuthProvider>
-   {/* Token falso solo DEV */}
-   
  <Routes>
+  <Route element={<PublicRoute />}>
   {/* Páginas públicas */}
   <Route path="/sesion" element={<Login />} />
   <Route path="/registro" element={<Registro />} />
-
+</Route>
   {/* Páginas privadas */}
   <Route element={<ProtectedRoute />}>
     <Route path="/" element={<Layout />}>

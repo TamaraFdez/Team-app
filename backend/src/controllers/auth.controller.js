@@ -2,6 +2,7 @@ import db from '../config/database.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { cookieOptions, COOKIE_NAME } from '../config/auth.js'
+import { AVATARES } from '../config/avatares.js'
 
 const DURACION_TOKEN = 24 * 60 * 60 * 1000
 
@@ -48,6 +49,13 @@ export async function registrar(req, res) {
         mensaje: 'Faltan campos obligatorios'
       })
     }
+    if (typeof nombreUsuario !== 'string' || typeof contrasena !== 'string' || typeof alineamiento !== 'string') {
+      return res.status(400).json({ mensaje: 'Formato de datos no válido' })
+    }
+
+    if (contrasena.length > 72) {
+      return res.status(400).json({ mensaje: 'La contraseña no puede superar los 72 caracteres' })
+    }
 
     const nombre = nombreUsuario.trim()
 
@@ -69,13 +77,20 @@ export async function registrar(req, res) {
       })
     }
 
+    // El avatar es opcional: si no se elige, se guarda null
+    const avatarFinal = avatar ?? null
+
+    if (avatarFinal !== null && !AVATARES.includes(avatarFinal)) {
+      return res.status(400).json({ mensaje: 'El avatar no es válido' })
+    }
+
     const hash = await bcrypt.hash(contrasena, 12)
 
     const [resultado] = await db.execute(
       `INSERT INTO usuario
         (nombre_usuario, hash_contrasena, alineamiento, avatar)
        VALUES (?, ?, ?, ?)`,
-      [nombre, hash, alineamiento, avatar || null]
+      [nombre, hash, alineamiento, avatarFinal]
     )
 
     const usuario = {
@@ -91,7 +106,7 @@ export async function registrar(req, res) {
         id: usuario.id,
         nombreUsuario: usuario.nombre_usuario,
         alineamiento,
-        avatar: avatar || null
+        avatar: avatarFinal
       }
     })
 
@@ -119,6 +134,10 @@ export async function iniciarSesion(req, res) {
       return res.status(400).json({
         mensaje: 'Introduce el nombre de usuario y la contraseña'
       })
+    }
+
+    if (typeof nombreUsuario !== 'string' || typeof contrasena !== 'string') {
+      return res.status(400).json({ mensaje: 'Formato de datos no válido' })
     }
 
     const [usuarios] = await db.execute(
