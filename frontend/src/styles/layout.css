@@ -249,12 +249,14 @@
 
 /* CERRAR SESIÓN */
 .app-topbar-cerrar {
-  color: var(--color-error);
+  color: var(--color-primario);
 }
 
 .app-topbar-cerrar:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--color-error) 12%, transparent);
-  color: var(--color-error);
+  /* background: color-mix(in srgb, var(--color-error) 12%, transparent); */
+  /* filter: brightness(1.1); */
+  background: var(--color-primario);
+  color: var(--color-sobre-primario);
 }
 
 /* SEPARADOR */

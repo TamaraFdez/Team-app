@@ -7,15 +7,9 @@ const tablas = [
     nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
     hash_contrasena VARCHAR(255) NOT NULL,
     alineamiento ENUM(
-      'Lawful Good',
-      'Neutral Good',
-      'Chaotic Good',
-      'Lawful Neutral',
-      'True Neutral',
-      'Chaotic Neutral',
-      'Lawful Evil',
-      'Neutral Evil',
-      'Chaotic Evil'
+      'Héroe',
+      'Neutral',
+      'Villano'
     ) NOT NULL,
     avatar VARCHAR(500)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`,

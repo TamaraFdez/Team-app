@@ -400,13 +400,16 @@
 .auth-error {
   padding: var(--espacio-3) var(--espacio-4);
 
-  border: var(--borde-fino) solid var(--color-error);
+  /* border: var(--borde-fino) solid var(--color-error); */
   border-radius: var(--radio-sm);
 
-  background: color-mix(in srgb, var(--color-error) 12%, transparent);
-  color: var(--color-error);
+  /* background: color-mix(in srgb, var(--color-error) 12%, transparent); */
+  background: var(--color-error);
+  color: var(--color-sobre-fondo);
 
   font: var(--fuente-cuerpo);
+
+  font-weight: bold;
 }
 
 /* =========================================================

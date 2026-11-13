@@ -1,8 +1,8 @@
 import 'dotenv/config'
 import app from './src/app.js'
 import { comprobarConexion } from './src/config/database.js'
-import { inicializarTablas } from './src/config/initdatabase.js'
-import { cargarPersonajes } from './src/config/seedcharacters.js'
+import { inicializarTablas } from './src/config/initDatabase.js'
+import { cargarPersonajes } from './src/config/seedCharacters.js'
 
 const PORT = process.env.PORT || 3000
 

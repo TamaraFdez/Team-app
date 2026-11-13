@@ -7,15 +7,9 @@ import { AVATARES } from '../config/avatares.js'
 const DURACION_TOKEN = 24 * 60 * 60 * 1000
 
 const alineamientosValidos = [
-  'Lawful Good',
-  'Neutral Good',
-  'Chaotic Good',
-  'Lawful Neutral',
-  'True Neutral',
-  'Chaotic Neutral',
-  'Lawful Evil',
-  'Neutral Evil',
-  'Chaotic Evil'
+  'Héroe',
+  'Neutral',
+  'Villano'
 ]
 
 // Generar JWT y establecer la cookie

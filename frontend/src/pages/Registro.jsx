@@ -7,15 +7,9 @@ import authBackground from "../assets/backgrounds/siluetas-1.png";
 import { AVATARES, rutaAvatar } from "../data/avatares";
 
 const alineamientos = [
-  "Lawful Good",
-  "Neutral Good",
-  "Chaotic Good",
-  "Lawful Neutral",
-  "True Neutral",
-  "Chaotic Neutral",
-  "Lawful Evil",
-  "Neutral Evil",
-  "Chaotic Evil",
+  "Héroe",
+  "Neutral",
+  "Villano"
 ];
 
 export default function Registro() {
