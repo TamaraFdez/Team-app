@@ -1,6 +1,7 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import authRoutes from './routes/auth.routes.js'
+import apiRoutes from './routes/api.js'
 
 const app = express()
 app.set('trust proxy', 1)
@@ -15,4 +16,5 @@ app.get('/api/health', (req, res) => {
 })
 
 app.use('/api/auth', authRoutes)
+app.use('/api', apiRoutes)
 export default app
