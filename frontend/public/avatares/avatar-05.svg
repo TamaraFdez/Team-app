@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="titulo">
+  <title id="titulo">Mascota: supergato</title>
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b1a8c"/>
+      <stop offset="0.5" stop-color="#2f6fd6"/>
+      <stop offset="0.82" stop-color="#f08a4b"/>
+      <stop offset="1" stop-color="#ffb35a"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8ff6ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#8ff6ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="borde" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="brillo" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <g id="figura">
+      <!-- Capa al viento -->
+      <path d="M100 150 C80 170 60 200 50 256 L232 256 C238 220 246 196 254 180 C236 186 222 184 210 176 C220 168 226 156 228 144 C210 152 186 152 156 146 Z"/>
+      <!-- Cuerpo sentado -->
+      <path d="M104 136 C84 156 72 190 70 256 L186 256 C184 190 172 156 152 136 Z"/>
+      <!-- Cola -->
+      <path d="M182 256 C204 240 214 214 206 192 C202 180 208 170 218 170 C210 182 220 200 222 216 C224 238 210 252 196 256 Z"/>
+      <!-- Orejas y cabeza -->
+      <path d="M90 92 L88 44 L118 68 Z"/>
+      <path d="M166 92 L168 44 L138 68 Z"/>
+      <path d="M128 64 C156 64 172 80 172 102 C172 124 152 140 128 140 C104 140 84 124 84 102 C84 80 100 64 128 64 Z"/>
+    </g>
+  </defs>
+
+  <rect width="256" height="256" fill="url(#cielo)"/>
+  <circle cx="128" cy="110" r="90" fill="url(#halo)"/>
+  <circle cx="128" cy="110" r="76" fill="none" stroke="#6ff3ff" stroke-width="4" filter="url(#brillo)"/>
+  <path d="M0 256 V168 H12 V146 L18 122 L24 146 V176 H36 V256 Z M220 256 V140 H230 V116 L236 92 L242 116 V150 H256 V256 Z" fill="#3a2a9a" opacity="0.85"/>
+
+  <use href="#figura" fill="#8ff6ff" transform="translate(-2.5 -1.5)" filter="url(#borde)"/>
+  <use href="#figura" fill="#8ff6ff" transform="translate(2.5 -1.5)" filter="url(#borde)"/>
+  <use href="#figura" fill="#1b0b33"/>
+
+  <path d="M94 82 L93 56 L110 70 Z M162 82 L163 56 L146 70 Z" fill="#2e1f6a"/>
+  <!-- Antifaz -->
+  <path d="M96 98 C108 88 120 92 128 100 C136 92 148 88 160 98 C158 112 146 116 138 112 L128 106 L118 112 C110 116 98 112 96 98 Z" fill="#3b2a8a" stroke="#6ff3ff" stroke-width="1.5"/>
+  <g fill="#e8fdff" filter="url(#brillo)">
+    <path d="M106 102 L120 104 L116 108 L108 107 Z"/>
+    <path d="M150 102 L136 104 L140 108 L148 107 Z"/>
+  </g>
+  <path d="M124 118 L132 118 L128 123 Z" fill="#3b2a8a"/>
+  <path d="M104 120 L76 114 M104 126 L78 130 M152 120 L180 114 M152 126 L178 130" stroke="#6ff3ff" stroke-width="1.5" opacity="0.6"/>
+  <!-- Collar con broche de la capa -->
+  <path d="M104 140 C118 148 138 148 152 140" stroke="#ffb35a" stroke-width="4" fill="none"/>
+  <circle cx="128" cy="146" r="6" fill="#ffb35a" filter="url(#brillo)"/>
+</svg>

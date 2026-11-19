@@ -1,17 +1,25 @@
-import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
+import mysql from 'mysql2/promise'
+//createpool para administrar conjunto de peticiones y administrarlas
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT || 3306),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+})
 
-dotenv.config();
+export async function comprobarConexion() {
+  const conexion = await db.getConnection()
 
-const sequelize = new Sequelize(
-  process.env.DB_NAME || 'team_app_db',
-  process.env.DB_USER || 'root',
-  process.env.DB_PASSWORD || '',
-  {
-    host: process.env.DB_HOST || 'localhost',
-    dialect: 'mysql',
-    logging: false,
+  try {
+    await conexion.ping()
+    console.log('Conexión con MariaDB establecida correctamente')
+  } finally {
+    conexion.release()
   }
-);
+}
 
-export default sequelize;
+export default db

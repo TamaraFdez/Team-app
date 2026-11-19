@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="titulo">
+  <title id="titulo">Villana</title>
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e0838"/>
+      <stop offset="0.55" stop-color="#5b1a7e"/>
+      <stop offset="1" stop-color="#8a2a6e"/>
+    </linearGradient>
+    <radialGradient id="luna" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffc070"/>
+      <stop offset="0.65" stop-color="#ff7a2a"/>
+      <stop offset="1" stop-color="#e0461a"/>
+    </radialGradient>
+    <filter id="borde" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="brillo" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="niebla"><feGaussianBlur stdDeviation="8"/></filter>
+    <g id="figura">
+      <!-- Tiara de pinchos -->
+      <path d="M110 60 L114 34 L120 56 Z"/>
+      <path d="M122 54 L128 20 L134 54 Z"/>
+      <path d="M136 56 L142 34 L146 60 Z"/>
+      <!-- Melena con mechones -->
+      <path d="M128 46 C100 46 86 64 88 92 C90 118 80 140 62 160 C74 162 84 158 92 150 C86 164 78 172 66 178 C86 180 100 168 106 150 L108 110 L148 110 L150 150 C156 168 170 180 190 178 C178 172 170 164 164 150 C172 158 182 162 194 160 C176 140 166 118 168 92 C170 64 156 46 128 46 Z"/>
+      <path d="M128 58 C145 58 153 72 152 90 C151 106 145 118 137 126 L128 134 L119 126 C111 118 105 106 104 90 C103 72 111 58 128 58 Z"/>
+      <path d="M112 118 L144 118 L150 162 L106 162 Z"/>
+      <!-- Cuello alto -->
+      <path d="M70 184 L84 128 L106 160 L128 146 L150 160 L172 128 L186 184 Z"/>
+      <path d="M128 136 C106 148 82 156 64 166 C44 178 36 204 30 256 L226 256 C220 204 212 178 192 166 C174 156 150 148 128 136 Z"/>
+    </g>
+  </defs>
+
+  <rect width="256" height="256" fill="url(#cielo)"/>
+  <circle cx="128" cy="106" r="72" fill="url(#luna)"/>
+  <path d="M0 256 V170 H12 V140 L20 112 L28 140 V160 H40 V256 Z M256 256 V166 H244 V136 L236 104 L228 136 V256 Z" fill="#3a1050" opacity="0.9"/>
+  <g fill="#b04bff" opacity="0.45" filter="url(#niebla)">
+    <ellipse cx="24" cy="230" rx="50" ry="26"/>
+    <ellipse cx="236" cy="200" rx="40" ry="40"/>
+  </g>
+
+  <use href="#figura" fill="#ffa04d" transform="translate(-2.5 -1.5)" filter="url(#borde)"/>
+  <use href="#figura" fill="#ffa04d" transform="translate(2.5 -1.5)" filter="url(#borde)"/>
+  <use href="#figura" fill="#120a2e"/>
+
+  <path d="M128 160 L128 256 M100 200 L92 256 M156 200 L164 256" stroke="#2a1450" stroke-width="2" fill="none"/>
+  <g fill="#ff6bf0" filter="url(#brillo)">
+    <path d="M111 92 L124 96 L121 100 L113 97 Z"/>
+    <path d="M145 92 L132 96 L135 100 L143 97 Z"/>
+    <circle cx="128" cy="40" r="3"/>
+  </g>
+  <!-- Llama mágica -->
+  <path d="M214 236 C198 226 200 206 212 194 C210 206 218 208 220 200 C224 190 220 180 214 170 C232 180 240 200 236 216 C233 229 225 236 214 236 Z" fill="#b04bff" filter="url(#brillo)"/>
+  <path d="M216 230 C208 224 208 214 214 206 C214 212 220 214 222 208 C228 216 226 228 216 230 Z" fill="#f0c4ff"/>
+</svg>
