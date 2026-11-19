@@ -148,6 +148,7 @@
   --color-secundario-variante:  #C21C75;
   --color-fondo:                #070817;
   --color-superficie:           #0E1630;
+  --color-superficie-variante:  #19223a;
   --color-error:                #FF1F3D;
   --color-terciario:            #8B5CFF;
 
@@ -171,6 +172,7 @@
   --radio-md: 14px;     /* tarjetas y paneles */
   --radio-lg: 22px;     /* modales y hojas */
   --radio-xl: 22px;
+  --radio-xxl: 24px;
 
   /* elevación: brillo de neón */
   --sombra-sm: 0 0 8px  color-mix(in srgb, var(--color-primario) 35%, transparent);
@@ -192,6 +194,7 @@
   --color-secundario-variante:  #C21F58;
   --color-fondo:                #13101F;
   --color-superficie:           #221C36;
+  --color-superficie-variante:  #2d2741;
   --color-error:                #D90429;
   --color-terciario:            #5B7CFF;
 
