@@ -65,6 +65,14 @@ export async function registrar(req, res) {
       })
     }
 
+    const passwdRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+
+    if (!passwdRegex.test(contrasena)) {
+      return res.status(400).json({
+        mensaje: 'La contraseña debe tener al menos una mayúscula, una minúscula, un número y un caracter especial'
+      })
+    }
+
     if (!alineamientosValidos.includes(alineamiento)) {
       return res.status(400).json({
         mensaje: 'El alineamiento no es válido'
